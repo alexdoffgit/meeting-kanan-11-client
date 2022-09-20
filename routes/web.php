@@ -26,6 +26,10 @@ Route::get('/register', [RegisterController::class, 'displayRegister']);
 
 Route::post('/register', [RegisterController::class, 'register']);
 
+Route::get('/login', function() {
+    return view('login');
+});
+
 Route::prefix('admin')->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('create', [UserController::class, 'createForm'])->name('admin.user.create.get');

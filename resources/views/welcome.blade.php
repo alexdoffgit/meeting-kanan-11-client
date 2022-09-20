@@ -629,7 +629,7 @@
 					<h5>Useful links</h5>
 					<ul class="links">
 						<li><a href="about.html">About</a></li>
-						<li><a href="login.html">Login</a></li>
+						<li><a href="{{ url('/login') }}">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
 						<li><a href="blog.html">News &amp; Events</a></li>
 						<li><a href="contacts.html">Contacts</a></li>
@@ -699,6 +699,7 @@
 			<h3>Sign In</h3>
 		</div>
 		<form>
+			@csrf
 			<div class="sign-in-wrapper">
 				<a href="#0" class="social_bt facebook">Login with Facebook</a>
 				<a href="#0" class="social_bt google">Login with Google</a>
