@@ -42,6 +42,7 @@
 			</a>
 		</div>
 		<ul id="top_menu">
+			<!-- TODO: conditionaly change this into how many item in a cart -->
 			<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
 			<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
 			<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
@@ -371,10 +372,13 @@
 			</div>
 			<!-- /carousel -->
 			<p class="btn_home_align"><a href="tours-grid-isotope.html" class="btn_1 rounded">View all Tours</a></p>
-			<hr class="large">
+			{{-- some random line --}}
+			{{-- <hr class="large"> --}}
 		</div>
 		<!-- /container -->
 		
+		<!-- TODO: do something with this section -->
+		{{--
 		<div class="container container-custom margin_30_95">
 			<section class="add_bottom_45">
 				<div class="main_title_3">
@@ -605,6 +609,7 @@
 			</div>
 		</div>
 		<!--/call_section-->
+		--}}
 	</main>
 	<!-- /main -->
 
@@ -629,7 +634,7 @@
 					<h5>Useful links</h5>
 					<ul class="links">
 						<li><a href="about.html">About</a></li>
-						<li><a href="login.html">Login</a></li>
+						<li><a href="{{ url('/login') }}">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
 						<li><a href="blog.html">News &amp; Events</a></li>
 						<li><a href="contacts.html">Contacts</a></li>
@@ -699,6 +704,7 @@
 			<h3>Sign In</h3>
 		</div>
 		<form>
+			@csrf
 			<div class="sign-in-wrapper">
 				<a href="#0" class="social_bt facebook">Login with Facebook</a>
 				<a href="#0" class="social_bt google">Login with Google</a>

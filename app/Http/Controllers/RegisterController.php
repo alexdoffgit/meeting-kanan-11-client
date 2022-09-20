@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
 
 
 class RegisterController extends Controller
@@ -22,6 +22,17 @@ class RegisterController extends Controller
         $password = $r->password;
         $confirmPassword = $r->repass;
 
-        dd([$name, $lastName, $email, $password, $confirmPassword]);
+        if($password != $confirmPassword) {
+            return redirect("/register", 400);
+        }
+
+        $user = new User;
+        $user->name = $name;
+        $user->last_name = $lastName;
+        $user->email = $email;
+        $user->password = Hash::make($password);
+        $user->save();
+
+        return redirect("/login");
     }
 }
