@@ -43,7 +43,7 @@
 			<figure>
 				<a href="index.html"><img src="img/logo_sticky.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
 			</figure>
-			  <form>
+			  <form method="POST" action="{{ url('/login') }}">
 				  @csrf
 				<div class="access_social">
 					<a href="#0" class="social_bt facebook">Login with Facebook</a>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
 				</div>
-				<a href="#0" class="btn_1 rounded full-width">Login to Panagea</a>
+				<button type="submit" class="btn_1 rounded full-width">Login to Panagea</button>
 				<div class="text-center add_top_10">New to Panagea? <strong><a href="{{ url('/register') }}">Sign up!</a></strong></div>
 			</form>
 			<div class="copy">© 2018 Panagea</div>
