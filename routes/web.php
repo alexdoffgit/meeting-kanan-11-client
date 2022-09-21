@@ -30,12 +30,14 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::prefix('admin')->group(function () {
-    Route::prefix('user')->group(function () {
-        Route::get('create', [UserController::class, 'createForm'])->name('admin.user.create.get');
-        Route::post('create', [UserController::class, 'create'])->name('admin.user.create.post');
-    });
-    Route::prefix('room')->group(function () {
-        Route::get('create', [RoomController::class, 'createForm'])->name('admin.room.create.get');
-        Route::post('create', [RoomController::class, 'create']);
-    });
+    Route::get('add-listing', function() { return view('admin.addlisting'); });
+    Route::get('listings', function() { return view('admin.listings'); });
+    // Route::prefix('user')->group(function () {
+    //     Route::get('create', [UserController::class, 'createForm'])->name('admin.user.create.get');
+    //     Route::post('create', [UserController::class, 'create'])->name('admin.user.create.post');
+    // });
+    // Route::prefix('room')->group(function () {
+    //     Route::get('create', [RoomController::class, 'createForm'])->name('admin.room.create.get');
+    //     Route::post('create', [RoomController::class, 'create']);
+    // });
 });
