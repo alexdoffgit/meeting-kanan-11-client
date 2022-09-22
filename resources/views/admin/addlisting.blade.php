@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Ansonika">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>PANAGEA - Admin dashboard</title>
 	
   <!-- Favicons-->
@@ -60,7 +61,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Room Name</label>
-							<input type="text" class="form-control" name="name">
+							<input type="text" class="form-control" name="name" id="name">
 						</div>
 					</div>
 				</div>
@@ -85,7 +86,7 @@
 					<div class="col-md-12">
 						<div class="form-group">
 							<label>Photos</label>
-							<form action="/file-upload" class="dropzone"></form>
+							<div id="photos" class="dropzone dropzone-previews"></div>
 						</div>
 					</div>
 				</div>
@@ -109,9 +110,9 @@
 				<!-- /row-->
 			</div>
 			<!-- /box_general-->
+
 			
-			{{-- BEGIN Opening hour --}}
-			
+			{{-- BEGIN open time --}}
 			{{--
 			<div class="box_general padding_bottom">
 				<!-- TODO: get opening data from database-->
@@ -416,8 +417,7 @@
 				<!-- /row-->
 			</div>
 			--}}
-
-			{{-- END Opening hour --}}
+			{{-- END open time --}}
 			<!-- /box_general-->
 			
 			<div class="box_general padding_bottom">
@@ -438,77 +438,93 @@
 				<!-- /row-->
 			</div>
 			<!-- /box_general-->
-			<p><a href="#0" class="btn_1 medium">Save</a></p>
+			<button class="btn_1 medium" id="save">Save</button>
 		</div>
 		<!-- /.container-fluid-->
    	</div>
     <!-- /.container-wrapper-->
     <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © PANAGEA 2018</small>
-        </div>
-      </div>
+		<div class="container">
+			<div class="text-center">
+			<small>Copyright © PANAGEA 2018</small>
+			</div>
+		</div>
     </footer>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
+		<i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				<a class="btn btn-primary" href="login.html">Logout</a>
+			</div>
+			</div>
+		</div>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
-	<script src="{{ asset('admin/vendor/jquery.selectbox-0.2.js') }}"></script>
-	<script src="{{ asset('admin/vendor/retina-replace.min.js') }}"></script>
-	<script src="{{ asset('admin/vendor/jquery.magnific-popup.min.js') }}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('admin/js/admin.js') }}"></script>
-	<!-- Custom scripts for this page-->
-	<script src="{{ asset('admin/vendor/dropzone.min.js') }}"></script>
-	<script src="{{ asset('admin/vendor/bootstrap-datepicker.js') }}"></script>
-	<script>$('input.date-pick').datepicker();</script>
-  
-  <!-- WYSIWYG Editor -->
-  {{--
-  <script src="{{ asset('admin/js/editor/summernote-bs4.min.js') }}"></script>
-  <script>
-      $('.editor').summernote({
-    fontSizes: ['10', '14'],
-    toolbar: [
-      // [groupName, [list of button]]
-      ['style', ['bold', 'italic', 'underline', 'clear']],
-      ['font', ['strikethrough']],
-      ['fontsize', ['fontsize']],
-      ['para', ['ul', 'ol', 'paragraph']]
-      ],
-        placeholder: 'Write here your description....',
-        tabsize: 2,
-        height: 200
-      });
-	</script>
-	--}}
 </body>
+<!-- Bootstrap core JavaScript-->
+<script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}" defer></script>
+<!-- Page level plugin JavaScript-->
+{{--
+<script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
+<script src="{{ asset('admin/vendor/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+--}}
+<script src="{{ asset('admin/vendor/jquery.selectbox-0.2.js') }}" defer></script>
+{{--
+<script src="{{ asset('admin/vendor/retina-replace.min.js') }}"></script>
+<script src="{{ asset('admin/vendor/jquery.magnific-popup.min.js') }}"></script>
+--}}
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('admin/js/admin.js') }}" defer></script>
+<!-- Custom scripts for this page-->
+<script src="{{ asset('admin/vendor/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('admin/js/uid.js') }}" defer></script>
+<script>$('input.date-pick').datepicker();</script>
+<script src="{{ asset('admin/vendor/dropzone.min.js') }}"></script>
+<script>
+	Dropzone.autoDiscover = false;
+	let files = new Dropzone("div#photos", { 
+					url: "#",
+					autoProcessQueue: false,
+					addRemoveLinks: true
+				});
+
+	document.querySelector("#save").addEventListener('click', function() {
+		console.log(document.querySelector("input[name='name']").value)
+	})
+</script>
+<!-- WYSIWYG Editor -->
+{{--
+<script src="{{ asset('admin/js/editor/summernote-bs4.min.js') }}"></script>
+<script>
+	$('.editor').summernote({
+		fontSizes: ['10', '14'],
+		toolbar: [
+			// [groupName, [list of button]]
+			['style', ['bold', 'italic', 'underline', 'clear']],
+			['font', ['strikethrough']],
+			['fontsize', ['fontsize']],
+			['para', ['ul', 'ol', 'paragraph']]
+		],
+		placeholder: 'Write here your description....',
+		tabsize: 2,
+		height: 200
+	});
+</script>
+--}}
 </html>
