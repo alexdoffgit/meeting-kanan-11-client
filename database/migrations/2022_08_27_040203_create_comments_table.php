@@ -17,7 +17,8 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->text('content');
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('room_id')->constrained();
+            $table->string('room_id')->nullable();
+            $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
         });
     }
