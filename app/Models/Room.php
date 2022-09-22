@@ -9,6 +9,8 @@ class Room extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     public function usersWhoBooked()
     {
         return $this->belongsToMany(User::class, 'bookings');
@@ -25,5 +27,10 @@ class Room extends Model
     public function comments()
     {
         return $this->belongsToMany(Comment::class, 'ratings');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(RoomImage::class);
     }
 }
