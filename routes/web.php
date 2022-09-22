@@ -30,7 +30,7 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::prefix('admin')->group(function () {
-    Route::get('add-listing', function() { return view('admin.addlisting'); });
+    Route::get('add-listing', [RoomController::class, 'createForm']);
     Route::get('listings', function() { return view('admin.listings'); });
     // Route::prefix('user')->group(function () {
     //     Route::get('create', [UserController::class, 'createForm'])->name('admin.user.create.get');
