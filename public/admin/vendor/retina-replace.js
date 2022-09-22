@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ============================================================ */
- (function($) {
+(function($) {
     "use strict";
     
     var retinaReplace = function(element, options) {
@@ -28,13 +28,12 @@
         var normal_url = is_image ? $el.attr('src') : $el.backgroundImageUrl();
         var retina_url = this.options.generateUrl($el, normal_url);
 
-        $('<img/>').attr('src', retina_url).load(function() {
+        $('<img/>').attr('src', retina_url).on('load', function() {
 
             if (is_image) {
                 $el.attr('src', $(this).attr('src'));
             } else {
                 $el.backgroundImageUrl($(this).attr('src'));
-                $el.backgroundSize($(this)[0].width, $(this)[0].height);
             }
 
             $el.attr('data-retina', 'complete');
@@ -80,12 +79,6 @@
         return url ? this.each(function () { 
             $(this).css("background-image", 'url("' + url + '")')
         }) : $(this).css("background-image").replace(/url\(|\)|"|'/g, "");
-    }
-
-    $.fn.backgroundSize = function(retinaWidth, retinaHeight) {
-        var sizeValue = Math.floor(retinaWidth/2) + 'px ' + Math.floor(retinaHeight/2) + 'px';
-        $(this).css("background-size", sizeValue);
-        $(this).css("-webkit-background-size", sizeValue);
     }
 
     // Trigger replacement on elements that hav been marked up
