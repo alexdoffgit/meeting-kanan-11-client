@@ -11,7 +11,7 @@ class RoomController extends Controller
 {
     public function createForm()
     {
-        return view('admin.room.create');
+        return view('admin.addlisting');
     }
 
     public function create(Request $r) 
