@@ -20,7 +20,7 @@ class BatchImageUploadController extends Controller
         $ri = new RoomImage();
 
         $ri->thumbnail = $thumbnail == 'true' ? true : false;
-        $ri->image_url = $image->store('room_image');
+        $ri->image_url = $image->store('public/room_image');
         $ri->room_id = $id;
         $ri->save();
 
