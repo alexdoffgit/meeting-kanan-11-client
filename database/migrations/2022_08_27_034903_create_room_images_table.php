@@ -18,7 +18,8 @@ class CreateRoomImagesTable extends Migration
             $table->boolean('thumbnail');
             $table->string('image_url', 255);
             $table->string('room_id')->nullable();
-            $table->foreign('room_id')->references('id')->on('rooms');
+            // remove foreign key check, because room data store might fail
+            // $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
         });
     }

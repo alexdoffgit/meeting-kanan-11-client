@@ -27,11 +27,11 @@
   <!-- Icon fonts-->
   <link href="{{ asset('admin/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
-  <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+  {{-- <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet"> --}}
   <link href="{{ asset('admin/vendor/dropzone.css') }}" rel="stylesheet">
   <link href="{{ asset('admin/css/date_picker.css') }}" rel="stylesheet">
   <!-- WYSIWYG Editor -->
-  <link rel="stylesheet" href="{{ asset('admin/js/editor/summernote-bs4.css') }}">
+  {{-- <link rel="stylesheet" href="{{ asset('admin/js/editor/summernote-bs4.css') }}"> --}}
   <!-- Your custom styles -->
   <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
 	
@@ -61,7 +61,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>Room Name</label>
-							<input type="text" class="form-control" name="name" id="name">
+							<input type="text" class="form-control" name="name">
 						</div>
 					</div>
 				</div>
@@ -81,6 +81,14 @@
 
 				<!-- TODO: pakai info telepon atau nggak -->
 
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>Thumbnail</label>
+							<div id="thumbnail" class="dropzone dropzone-previews"></div>
+						</div>
+					</div>
+				</div>
 					
 				<div class="row">
 					<div class="col-md-12">
@@ -473,58 +481,81 @@
 		</div>
     </div>
 </body>
-<!-- Bootstrap core JavaScript-->
-<script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
-<!-- Core plugin JavaScript-->
-<script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}" defer></script>
-<!-- Page level plugin JavaScript-->
-{{--
-<script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
-<script src="{{ asset('admin/vendor/datatables/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
---}}
-<script src="{{ asset('admin/vendor/jquery.selectbox-0.2.js') }}" defer></script>
-{{--
-<script src="{{ asset('admin/vendor/retina-replace.min.js') }}"></script>
-<script src="{{ asset('admin/vendor/jquery.magnific-popup.min.js') }}"></script>
---}}
-<!-- Custom scripts for all pages-->
-<script src="{{ asset('admin/js/admin.js') }}" defer></script>
-<!-- Custom scripts for this page-->
-<script src="{{ asset('admin/vendor/bootstrap-datepicker.js') }}"></script>
-<script src="{{ asset('admin/js/uid.js') }}" defer></script>
-<script>$('input.date-pick').datepicker();</script>
+<script src="{{ asset('admin/js/uid.js') }}"></script>
+<script>
+	let id = uid()
+</script>
 <script src="{{ asset('admin/vendor/dropzone.min.js') }}"></script>
 <script>
 	Dropzone.autoDiscover = false;
-	let files = new Dropzone("div#photos", { 
-					url: "#",
+	let thumbnail = new Dropzone("div#thumbnail", {
+					url: `/images/${id}`,
 					autoProcessQueue: false,
-					addRemoveLinks: true
-				});
+					addRemoveLinks: true,
+					maxFiles: 1,
+					headers: {
+						'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+					}
+				})
+	thumbnail.on('sending', function(file, xhr, formData){
+		formData.append('thumbnail', 'true');
+	});
 
-	document.querySelector("#save").addEventListener('click', function() {
-		console.log(document.querySelector("input[name='name']").value)
+	let photos = new Dropzone("div#photos", { 
+					url: `/images/${id}`,
+					autoProcessQueue: false,
+					addRemoveLinks: true,
+					parallelUploads: 8,
+					maxFiles: 8,
+					headers: {
+						'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+					}
+				});
+	photos.on('sending', function(file, xhr, formData){
+		formData.append('thumbnail', 'false');
+	});
+
+</script>
+<script>
+	let saveBtn = document.querySelector("#save")
+	
+	saveBtn.addEventListener('click', function() {
+		let payload = {
+			id,
+			name: document.querySelector('input[name="name"]').value,
+			maxpeople: document.querySelector('input[name="maxpeople"]').value,
+			floor: document.querySelector('input[name="floor"]').value,
+			price: document.querySelector('input[name="price"]').value
+		}
+
+		thumbnail.processQueue()
+		photos.processQueue()
+
+		fetch("/admin/add-listing", {
+			method: 'POST',
+			headers: {
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+				'Content-Type': 'application/json',
+				'Accept': 'text/plain'
+			},
+			body: JSON.stringify(payload),
+		}).then((res) => {
+			if(res.ok) {
+				window.location.reload()
+			}
+
+			return res.text()
+		}).then((e) => {
+			if(e) {
+				alert(e)
+			}
+		})
+		.catch(e => console.error(e))
 	})
 </script>
-<!-- WYSIWYG Editor -->
-{{--
-<script src="{{ asset('admin/js/editor/summernote-bs4.min.js') }}"></script>
-<script>
-	$('.editor').summernote({
-		fontSizes: ['10', '14'],
-		toolbar: [
-			// [groupName, [list of button]]
-			['style', ['bold', 'italic', 'underline', 'clear']],
-			['font', ['strikethrough']],
-			['fontsize', ['fontsize']],
-			['para', ['ul', 'ol', 'paragraph']]
-		],
-		placeholder: 'Write here your description....',
-		tabsize: 2,
-		height: 200
-	});
-</script>
---}}
+<script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}" ></script>
+<script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+<script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}" defer></script>
+<script src="{{ asset('admin/vendor/jquery.selectbox-0.2.js') }}" defer></script>
+<script src="{{ asset('admin/js/admin.js') }}" defer></script>
 </html>

@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Room;
-
+use Illuminate\Validation\ValidationException;
 class RoomController extends Controller
 {
     public function createForm()
@@ -16,30 +15,28 @@ class RoomController extends Controller
 
     public function create(Request $r) 
     {
-        $r->validate([
-            'name' => 'required',
-            'location' => 'required',
-            'image' => ['required', 'image', 'mimes:png,jpg,jpeg'],
-        ]);
+        try {
+            $r->validate([
+                'id' => 'required',
+                'name' => 'required',
+                'floor' => 'required',
+                'maxpeople' => 'required',
+                'price' => 'required'
+            ]);
 
-        $name = $r->name;
-        $location = $r->location;
-        $image = $r->file('image');
+            $room = new Room();
+            $room->id = $r->input('id');
+            $room->room_name = $r->input('name');
+            $room->location = $r->input('floor');
+            $room->price = $r->input('price');
+            $room->maxpeople = $r->input('maxpeople');
+            $room->save();
 
-        $imageStoragePath = Storage::disk('public')->put("/", $image);
-
-        $room = new Room;
-        $room->room_name = $name;
-        $room->location = $location;
-
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            $room->image_url = public_path("storage\\{$imageStoragePath}");
-        } else {
-            $room->image_url = public_path("storage/{$imageStoragePath}");
+            return response('ok');
+        } catch(ValidationException $v) {
+            return response('please fill all field', 400);
+        } catch(\Throwable $th) {
+            return response('internal server error', 500);
         }
-
-        $room->save();
-
-        return redirect()->route('admin.room.create.get');
     }
 }
