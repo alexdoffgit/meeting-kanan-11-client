@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\UserController;
 
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BatchImageUploadController;
+use App\Http\Controllers\RoomListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,7 @@ use App\Http\Controllers\BatchImageUploadController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [RoomListController::class, 'index']);
 
 Route::get('/register', [RegisterController::class, 'displayRegister']);
 

@@ -255,120 +255,25 @@
 				<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
 			</div>
 			<div id="reccomended" class="owl-carousel owl-theme">
+				@foreach ($rooms as $room)
 				<div class="item">
 					<div class="box_grid">
 						<figure>
 							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_1.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Historic</small>
+							<a href="tour-detail.html"><img src="{{asset($room['images'])}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
 						</figure>
 						<div class="wrapper">
-							<h3><a href="tour-detail.html">Arc Triomphe</a></h3>
+							<h3><a href="tour-detail.html">{{ $room['room_name'] }}</a></h3>
 							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$54</strong> /per person</span>
+							<span class="price">From <strong>${{ $room['price'] }}</strong> /per person</span>
 						</div>
 						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
+							<li>{{-- this need to exist for layout --}}</li>
 							<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
 						</ul>
 					</div>
 				</div>
-				<!-- /item -->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_2.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Churches</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="tour-detail.html">Notredam</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$124</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /item -->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Historic</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="tour-detail.html">Versailles</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$25</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /item -->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_3.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Historic</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="tour-detail.html">Versailles</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$25</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.0</strong></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /item -->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_4.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Museum</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="tour-detail.html">Pompidue Museum</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$45</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 2h 30min</li>
-							<li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.0</strong></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /item -->
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							<a href="#0" class="wish_bt"></a>
-							<a href="tour-detail.html"><img src="img/tour_5.jpg" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-							<small>Walking</small>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="tour-detail.html">Tour Eiffel</a></h3>
-							<p>Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu.</p>
-							<span class="price">From <strong>$65</strong> /per person</span>
-						</div>
-						<ul>
-							<li><i class="icon_clock_alt"></i> 1h 30min</li>
-							<li><div class="score"><span>Good<em>350 Reviews</em></span><strong>7.5</strong></div></li>
-						</ul>
-					</div>
-				</div>
-				<!-- /item -->
+				@endforeach
 			</div>
 			<!-- /carousel -->
 			<p class="btn_home_align"><a href="tours-grid-isotope.html" class="btn_1 rounded">View all Tours</a></p>
