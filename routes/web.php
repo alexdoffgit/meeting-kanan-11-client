@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BatchImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,11 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 
+Route::post('/images/{id}', [BatchImageUploadController::class, 'store']);
+
 Route::prefix('admin')->group(function () {
     Route::get('add-listing', [RoomController::class, 'createForm']);
+    Route::post('add-listing', [RoomController::class, 'create']);
     Route::get('listings', function() { return view('admin.listings'); });
     // Route::prefix('user')->group(function () {
     //     Route::get('create', [UserController::class, 'createForm'])->name('admin.user.create.get');
