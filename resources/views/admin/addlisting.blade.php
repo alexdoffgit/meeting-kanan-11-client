@@ -542,6 +542,7 @@
 		}).then((res) => {
 			if(res.ok) {
 				window.location.reload()
+				return
 			}
 
 			return res.text()
