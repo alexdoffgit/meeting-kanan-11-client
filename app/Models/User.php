@@ -55,4 +55,9 @@ class User extends Authenticatable
     public function wishlistedRooms() {
         return $this->belongsToMany(Room::class, 'wishlists');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

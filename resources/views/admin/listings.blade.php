@@ -58,36 +58,18 @@
 			</div>
 			<div class="list_general">
 				<ul>
-					<li>
-						<figure><img src="img/item_1.jpg" alt=""></figure>
-						<small>Hotel</small>
-						<h4>Hotel Mariott</h4>
-						<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per....</p>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
-					<li>
-						<figure><img src="img/item_2.jpg" alt=""></figure>
-						<small>Restaurant</small>
-						<h4>Da Alfredo</h4>
-						<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per....</p>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
-					<li>
-						<figure><img src="img/item_3.jpg" alt=""></figure>
-						<small>Museum</small>
-						<h4>Pompidue</h4>
-						<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per....</p>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
+          @foreach ($rooms as $room)
+            <li>
+              <figure><img src="{{ $room['image'] }}" alt=""></figure>
+              <small></small>
+              <h4>{{ $room["room_name"] }}</h4>
+              <p>{{ $room["description"] }}</p>
+              <p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
+              <ul class="buttons">
+                <li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+              </ul>
+            </li>
+          @endforeach
 				</ul>
 			</div>
 		</div>

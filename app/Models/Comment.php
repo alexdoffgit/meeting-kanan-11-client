@@ -9,8 +9,13 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function rooms()
+    public function room()
     {
-        return $this->belongsToMany(Room::class, 'ratings');
+        return $this->belongsTo(Room::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

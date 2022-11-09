@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Room extends Model
 {
@@ -17,7 +18,7 @@ class Room extends Model
     }
 
     public function usersWhoWishlisted() {
-        return $this->belongsToMany(User::class, 'wislists');
+        return $this->belongsToMany(User::class, 'wishlists');
     }
 
     public function usersCart() {
@@ -26,11 +27,16 @@ class Room extends Model
 
     public function comments()
     {
-        return $this->belongsToMany(Comment::class, 'ratings');
+        return $this->hasMany(Comment::class);
     }
 
     public function images()
     {
-        return $this->hasMany(RoomImage::class);
+        return $this->hasMany(RoomImage::class, 'room_id');
+    }
+
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
     }
 }

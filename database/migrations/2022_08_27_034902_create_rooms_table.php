@@ -17,6 +17,7 @@ class CreateRoomsTable extends Migration
             $table->string('id', '255');
             $table->string('room_name');
             $table->string('location');
+            $table->text('description');
             $table->unsignedInteger('maxpeople');
             $table->float('price');
             $table->timestamps();

@@ -189,10 +189,10 @@
 	});
 	
 	// Like Icon
-    $('.wish_bt').on('click', function(e){
-    	e.preventDefault();
-		$(this).toggleClass('liked');
-	});
+    // $('.wish_bt').on('click', function(e){
+    // 	e.preventDefault();
+	// 	$(this).toggleClass('liked');
+	// });
 	
 	// Collapse filters
 	$(window).bind('load resize', function () {

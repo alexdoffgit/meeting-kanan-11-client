@@ -70,6 +70,16 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
+							<label>Description</label>
+							<textarea name="description" class="form-control"></textarea>
+						</div>
+					</div>
+				</div>
+				<!-- /row-->
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
 							<label>Max People</label>
 							<input type="number" class="form-control" name="maxpeople" min="1">
 						</div>
@@ -522,6 +532,7 @@
 	saveBtn.addEventListener('click', function() {
 		let payload = {
 			id,
+			description: document.querySelector('textarea[name="description"]').value,
 			name: document.querySelector('input[name="name"]').value,
 			maxpeople: document.querySelector('input[name="maxpeople"]').value,
 			floor: document.querySelector('input[name="floor"]').value,

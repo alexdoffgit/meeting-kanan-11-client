@@ -177,6 +177,9 @@ return [
 
         // image
         Intervention\Image\ImageServiceProvider::class,
+
+        // repo
+        App\Providers\RepositoryServiceProvider::class,
     ],
 
     /*
