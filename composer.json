@@ -52,6 +52,12 @@
     },
     "extra": {
         "laravel": {
+            "providers": [
+                "Barryvdh\\Debugbar\\ServiceProvider"
+            ],
+            "aliases": {
+                "Debugbar": "Barryvdh\\Debugbar\\Facade"
+            },
             "dont-discover": []
         }
     },
