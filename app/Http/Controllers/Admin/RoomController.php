@@ -9,6 +9,11 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
 class RoomController extends Controller
 {
+    public function viewlisting(Request $request, $id)
+    {
+        return view('admin.viewlisting');
+    }
+
     public function listing(Request $request)
     {
         $rooms = Room::all()->map(function($room, $index) {
