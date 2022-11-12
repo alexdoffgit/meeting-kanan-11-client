@@ -65,4 +65,5 @@ Route::prefix('admin')->group(function () {
     Route::get('add-listing', [RoomController::class, 'createForm']);
     Route::post('add-listing', [RoomController::class, 'create']);
     Route::get('listings', [RoomController::class, 'listing']);
+    Route::get('listing/{id}', [RoomController::class, 'viewlisting']);
 });
