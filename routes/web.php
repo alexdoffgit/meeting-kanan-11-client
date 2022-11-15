@@ -61,9 +61,9 @@ Route::get('/wishlist', [WishlistController::class, 'index']);
 Route::post('/wishlist/add', [WishlistController::class, 'add'])->middleware('auth');
 Route::post('/wishlist/delete', [WishlistController::class, 'delete']);
 
-Route::prefix('admin')->group(function () {
+Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('add-listing', [RoomController::class, 'createForm']);
     Route::post('add-listing', [RoomController::class, 'create']);
-    Route::get('listings', [RoomController::class, 'listing']);
+    Route::get('listings', [RoomController::class, 'listing'])->name('listings');
     Route::get('listing/{id}', [RoomController::class, 'viewlisting']);
 });

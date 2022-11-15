@@ -14,4 +14,5 @@ class Controller extends BaseController
     protected $allRoom = 'allRoom';
     protected $roomSession = 'roomsSearch';
     protected $homeSession = 'homeSearch';
+    protected $adminListingChunkIndex = 'chunkIndex';
 }

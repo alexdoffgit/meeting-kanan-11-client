@@ -75,21 +75,41 @@
       </div>
       <!-- /box_general-->
 
-      {{--
       <nav aria-label="...">
         <ul class="pagination pagination-sm add_bottom_30">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
+          @if ($currentPage - 1 <= 0)
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+          @else
+            <li class="page-item">
+              <a class="page-link" href="{{route('admin.listings', ['page' => $currentPage - 1])}}" tabindex="-1">
+                Previous
+              </a>
+            </li>
+          @endif
+          @for ($i = 1; $i <= $totalPage; $i++)
+            @if ($i == $currentPage)
+              <li class="page-item active">
+                <a class="page-link" href="{{route('admin.listings', ['page' => $i])}}">{{$i}}</a>
+              </li>
+            @else
+              <li class="page-item">
+                <a class="page-link" href="{{route('admin.listings', ['page' => $i])}}">{{$i}}</a>
+              </li>
+            @endif
+          @endfor
+          @if ($currentPage == $totalPage)
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          @else
+            <li class="page-item">
+              <a class="page-link" href="{{route('admin.listings', ['page' => $i + 1])}}">Next</a>
+            </li>
+          @endif
         </ul>
       </nav>
-      --}}
       <!-- /pagination-->
     </div>
 	  <!-- /container-fluid-->
