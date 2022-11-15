@@ -30,8 +30,9 @@ class RoomController extends Controller
                 "description" => $room->description,
                 "image" => $image
             ];
-        })
-        ->all();
+        })->chunk(2)->all();
+
+        dd($rooms[0]);
 
         return view('admin.listings', ['rooms' => $rooms]);
     }

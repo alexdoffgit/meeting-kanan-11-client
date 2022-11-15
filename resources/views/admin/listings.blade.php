@@ -45,96 +45,100 @@
         </li>
         <li class="breadcrumb-item active">Listings</li>
       </ol>
-		<div class="box_general">
-			<div class="header_box">
-				<h2 class="d-inline-block">Listings</h2>
-				<div class="filter">
-					<select name="orderby" class="selectbox">
-						<option value="Any time">Any time</option>
-						<option value="Latest">Latest</option>
-						<option value="Oldest">Oldest</option>
-					</select>
-				</div>
-			</div>
-			<div class="list_general">
-				<ul>
-          @foreach ($rooms as $room)
-            <li>
-              <figure><img src="{{ $room['image'] }}" alt=""></figure>
-              <small></small>
-              <h4>{{ $room["room_name"] }}</h4>
-              <p>{{ $room["description"] }}</p>
-              <p><a href="{{ url("admin/listing/{$room['id']}") }}" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
-              <ul class="buttons">
-                <li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-              </ul>
-            </li>
-          @endforeach
-				</ul>
-			</div>
-		</div>
-		<!-- /box_general-->
-		<nav aria-label="...">
-			<ul class="pagination pagination-sm add_bottom_30">
-				<li class="page-item disabled">
-					<a class="page-link" href="#" tabindex="-1">Previous</a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-					<a class="page-link" href="#">Next</a>
-				</li>
-			</ul>
-		</nav>
-		<!-- /pagination-->
-	  </div>
-	  <!-- /container-fluid-->
-   	</div>
-    <!-- /container-wrapper-->
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © PANAGEA 2018</small>
+      <div class="box_general">
+        <div class="header_box">
+          <h2 class="d-inline-block">Listings</h2>
+          <div class="filter">
+            <select name="orderby" class="selectbox">
+              <option value="Any time">Any time</option>
+              <option value="Latest">Latest</option>
+              <option value="Oldest">Oldest</option>
+            </select>
+          </div>
+        </div>
+        <div class="list_general">
+          <ul>
+            @foreach ($rooms as $room)
+              <li>
+                <figure><img src="{{ $room['image'] }}" alt=""></figure>
+                <small></small>
+                <h4>{{ $room["room_name"] }}</h4>
+                <p>{{ $room["description"] }}</p>
+                <p><a href="{{ url("admin/listing/{$room['id']}") }}" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
+                <ul class="buttons">
+                  <li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+                </ul>
+              </li>
+            @endforeach
+          </ul>
         </div>
       </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
+      <!-- /box_general-->
+
+      {{--
+      <nav aria-label="...">
+        <ul class="pagination pagination-sm add_bottom_30">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+      --}}
+      <!-- /pagination-->
+    </div>
+	  <!-- /container-fluid-->
+  </div>
+  <!-- /container-wrapper-->
+  <footer class="sticky-footer">
+    <div class="container">
+      <div class="text-center">
+        <small>Copyright © PANAGEA 2018</small>
+      </div>
+    </div>
+  </footer>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+  <!-- Page level plugin JavaScript-->
+  <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
+  <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.js') }}"></script>
+  <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
 	<script src="{{ asset('admin/vendor/jquery.selectbox-0.2.js') }}"></script>
 	<script src="{{ asset('admin/vendor/retina-replace.min.js') }}"></script>
 	<script src="{{ asset('admin/vendor/jquery.magnific-popup.min.js') }}"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('admin/js/admin.js') }}"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="{{ asset('admin/js/admin.js') }}"></script>
 	
 </body>
 </html>
