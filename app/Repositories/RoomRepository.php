@@ -136,11 +136,11 @@ class RoomRepository implements RoomRepositoryInterface {
                         ->comments
                         ->reduce(function($carry, $comment) {
                             return [
-                                "5" => round($comment->rating/2) == 5 ? $carry["5"] + 1 : $carry["5"],
-                                "4" => round($comment->rating/2) == 4 ? $carry["4"] + 1 : $carry["4"],
-                                "3" => round($comment->rating/2) == 3 ? $carry["3"] + 1 : $carry["3"],
-                                "2" => round($comment->rating/2) == 2 ? $carry["2"] + 1 : $carry["2"],
-                                "1" => round($comment->rating/2) == 1 ? $carry["1"] + 1 : $carry["1"],
+                                "5" => $comment->rating == 5 ? $carry["5"] + 1 : $carry["5"],
+                                "4" => $comment->rating == 4 ? $carry["4"] + 1 : $carry["4"],
+                                "3" => $comment->rating == 3 ? $carry["3"] + 1 : $carry["3"],
+                                "2" => $comment->rating == 2 ? $carry["2"] + 1 : $carry["2"],
+                                "1" => $comment->rating == 1 ? $carry["1"] + 1 : $carry["1"],
                             ];
                         }, [
                             "5" => 0,
@@ -170,7 +170,7 @@ class RoomRepository implements RoomRepositoryInterface {
                         ->whenNotEmpty(function($c) {
                             return $c->map(function($comment, $key) {
                                 return [
-                                    "star" => intval(round($comment->rating/2)),
+                                    "star" => $comment->rating,
                                     "text" => $comment->content,
                                     "author" => $comment->user->name,
                                     "time" =>  (!empty($comment->updated_at)) ? $comment->updated_at->toFormattedDateString() : "",

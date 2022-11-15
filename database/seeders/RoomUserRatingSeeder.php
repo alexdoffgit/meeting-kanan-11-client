@@ -145,30 +145,30 @@ class RoomUserRatingSeeder extends Seeder
     
         DB::table('comments')->insert([
             [
-                'rating' => 7,
+                'rating' => 3,
                 'room_id' => $r2Id,
                 'user_id' => 1,
             ],
             [
-                'rating' => 8,
+                'rating' => 4,
                 'room_id' => $r2Id,
                 'user_id' => 2
             ],
 
             [
-                'rating' => 6,
+                'rating' => 2,
                 'room_id' => $r3Id,
                 'user_id' => 1,
             ],
 
             [
-                'rating' => 7,
+                'rating' => 3,
                 'room_id' => $r4Id,
                 'user_id' => 3 
             ],
             
             [
-                'rating' => 8,
+                'rating' => 4,
                 'room_id' => $r5Id,
                 'user_id' => '2'
             ]
