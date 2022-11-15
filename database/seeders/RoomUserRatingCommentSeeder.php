@@ -145,7 +145,7 @@ class RoomUserRatingCommentSeeder extends Seeder
     
         DB::table('comments')->insert([
             [
-                'rating' => 7,
+                'rating' => 3,
                 'content' => 'Quisque viverra placerat egestas. Mauris iaculis purus velit.',
                 'room_id' => $r2Id,
                 'user_id' => 1,
@@ -153,7 +153,7 @@ class RoomUserRatingCommentSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'rating' => 8,
+                'rating' => 4,
                 'content' => 'Morbi aliquet vitae nisl et posuere. Vestibulum eget.',
                 'room_id' => $r2Id,
                 'user_id' => 2,
@@ -162,7 +162,7 @@ class RoomUserRatingCommentSeeder extends Seeder
             ],
 
             [
-                'rating' => 6,
+                'rating' => 2,
                 'content' => 'Integer tristique mi nec purus dapibus pellentesque. Sed.',
                 'room_id' => $r3Id,
                 'user_id' => 1,
@@ -171,7 +171,7 @@ class RoomUserRatingCommentSeeder extends Seeder
             ],
 
             [
-                'rating' => 7,
+                'rating' => 3,
                 'content' => 'Suspendisse blandit lobortis nibh, a faucibus nisl rutrum.',
                 'room_id' => $r4Id,
                 'user_id' => 3,
@@ -180,7 +180,7 @@ class RoomUserRatingCommentSeeder extends Seeder
             ],
             
             [
-                'rating' => 8,
+                'rating' => 4,
                 'content' => 'Sed eget tincidunt dolor. Donec sit amet bibendum.',
                 'room_id' => $r5Id,
                 'user_id' => '2',
