@@ -21,19 +21,19 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 	
   <!-- Bootstrap core CSS-->
-  <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('admin-style/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Main styles -->
-  <link href="{{ asset('admin/css/admin.css') }}" rel="stylesheet">
+  <link href="{{ asset('admin-style/css/admin.css') }}" rel="stylesheet">
   <!-- Icon fonts-->
-  <link href="{{ asset('admin/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('admin-style/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
-  {{-- <link href="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet"> --}}
-  <link href="{{ asset('admin/vendor/dropzone.css') }}" rel="stylesheet">
-  <link href="{{ asset('admin/css/date_picker.css') }}" rel="stylesheet">
+  {{-- <link href="{{ asset('admin-style/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet"> --}}
+  <link href="{{ asset('admin-style/vendor/dropzone.css') }}" rel="stylesheet">
+  <link href="{{ asset('admin-style/css/date_picker.css') }}" rel="stylesheet">
   <!-- WYSIWYG Editor -->
-  {{-- <link rel="stylesheet" href="{{ asset('admin/js/editor/summernote-bs4.css') }}"> --}}
+  {{-- <link rel="stylesheet" href="{{ asset('admin-style/js/editor/summernote-bs4.css') }}"> --}}
   <!-- Your custom styles -->
-  <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
+  <link href="{{ asset('admin-style/css/custom.css') }}" rel="stylesheet">
 	
 </head>
 
@@ -491,11 +491,11 @@
 		</div>
     </div>
 </body>
-<script src="{{ asset('admin/js/uid.js') }}"></script>
+<script src="{{ asset('admin-style/js/uid.js') }}"></script>
 <script>
 	let id = uid()
 </script>
-<script src="{{ asset('admin/vendor/dropzone.min.js') }}"></script>
+<script src="{{ asset('admin-style/vendor/dropzone.min.js') }}"></script>
 <script>
 	Dropzone.autoDiscover = false;
 	let thumbnail = new Dropzone("div#thumbnail", {
@@ -565,9 +565,9 @@
 		.catch(e => console.error(e))
 	})
 </script>
-<script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}" ></script>
-<script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
-<script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}" defer></script>
-<script src="{{ asset('admin/vendor/jquery.selectbox-0.2.js') }}" defer></script>
-<script src="{{ asset('admin/js/admin.js') }}" defer></script>
+<script src="{{ asset('admin-style/vendor/jquery/jquery.min.js') }}" ></script>
+<script src="{{ asset('admin-style/vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+<script src="{{ asset('admin-style/vendor/jquery-easing/jquery.easing.min.js') }}" defer></script>
+<script src="{{ asset('admin-style/vendor/jquery.selectbox-0.2.js') }}" defer></script>
+<script src="{{ asset('admin-style/js/admin.js') }}" defer></script>
 </html>

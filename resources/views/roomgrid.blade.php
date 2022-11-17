@@ -26,7 +26,15 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
-
+	<style>
+		.hero_in.tours:before {
+			background: url({{asset('img/hero_in_bg_3.jpg')}}) center center no-repeat;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+	</style>
 </head>
 
 <body>

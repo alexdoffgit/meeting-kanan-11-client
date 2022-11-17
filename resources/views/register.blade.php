@@ -26,7 +26,17 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
-	
+	<style>
+		#login_bg, #register_bg {
+			background: url(../img/hero_in_bg_3.jpg) center center no-repeat fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			min-height: 100vh;
+			width: 100%;
+		}
+	</style>
 </head>
 
 <body id="register_bg">
