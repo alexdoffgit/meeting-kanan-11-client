@@ -16,7 +16,22 @@ class RoomController extends Controller
 
     public function listing(Request $request)
     {
-        $rooms = Room::all()->map(function($room, $index) {
+        $roomListingPerPage = 10;
+
+        $page = $request->query('page');
+        $currentPage = !empty($page) ? intval($page) : 1;
+
+        $chunkIndex = !empty($page) ? intval($page - 1) : 0;
+
+        if(session()->has($this->adminListingChunkIndex)) {
+            session()->reflash();
+        } else {
+            session()->flash($this->adminListingChunkIndex, $chunkIndex);
+        }
+
+        $chunkIndexSession = session()->get($this->adminListingChunkIndex);
+
+        $chunkedRoom = Room::all()->map(function($room, $index) {
             $image = asset(
                 $room
                 ->images
@@ -30,11 +45,15 @@ class RoomController extends Controller
                 "description" => $room->description,
                 "image" => $image
             ];
-        })->chunk(2)->all();
+        })->chunk($roomListingPerPage);
 
-        dd($rooms[0]);
+        $rooms = $chunkedRoom[$chunkIndexSession]->all();
 
-        return view('admin.listings', ['rooms' => $rooms]);
+        return view('admin.listings', [
+            'rooms' => $rooms, 
+            'totalPage' => $chunkedRoom->count(),
+            'currentPage' => $currentPage
+        ]);
     }
 
     public function createForm()
