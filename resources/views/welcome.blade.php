@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>OK-Meeting.</title>
+    @extends('layout.title')
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -26,7 +26,15 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
-
+	<style>
+		.hero_single.version_2:before {
+			background: url({{asset('img/home_section_1.jpg')}}) center center no-repeat;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+	</style>
 </head>
 
 <body class="datepicker_mobile_full"><!-- Remove this class to disable datepicker full on mobile -->

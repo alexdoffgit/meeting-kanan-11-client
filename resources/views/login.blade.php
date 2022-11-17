@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    @extends('layout.title')
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -26,7 +26,17 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
-
+	<style>
+		#login_bg, #register_bg {
+			background: url(../img/hero_in_bg_3.jpg) center center no-repeat fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			min-height: 100vh;
+			width: 100%;
+		}
+	</style>
 </head>
 
 <body id="login_bg">
@@ -70,7 +80,7 @@
 					</div>
 					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
 				</div>
-				<button type="submit" class="btn_1 rounded full-width">Login to Panagea</button>
+				<button type="submit" class="btn_1 rounded full-width">Login</button>
 				<div class="text-center add_top_10">New to Panagea? <strong><a href="{{ url('/register') }}">Sign up!</a></strong></div>
 			</form>
 			<div class="copy">© 2018 Panagea</div>

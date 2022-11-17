@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\RoomController;
@@ -62,6 +63,8 @@ Route::post('/wishlist/add', [WishlistController::class, 'add'])->middleware('au
 Route::post('/wishlist/delete', [WishlistController::class, 'delete']);
 
 Route::name('admin.')->prefix('admin')->group(function () {
+    Route::get('/', function() { return redirect('/admin/dashboard'); });
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('add-listing', [RoomController::class, 'createForm']);
     Route::post('add-listing', [RoomController::class, 'create']);
     Route::get('listings', [RoomController::class, 'listing'])->name('listings');
