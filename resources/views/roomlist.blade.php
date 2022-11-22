@@ -96,9 +96,6 @@
             
             <section class="hero_in tours">
                 <div class="wrapper">
-                    <div class="container">
-                        <h1 class="fadeInUp"><span></span>Paris tours list</h1>
-                    </div>
                 </div>
             </section>
             <!--/hero_in-->
@@ -126,7 +123,7 @@
                             </div>
                         </li>
                         <li>
-                            <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on map</a>
+                            {{-- preserve for layout --}}
                         </li>
                     </ul>
                 </div>
@@ -209,6 +206,7 @@
             </div>
             <!-- /container -->
             <div class="bg_color_1">
+                {{--
                 <div class="container margin_60_35">
                     <div class="row">
                         <div class="col-md-4">
@@ -235,6 +233,7 @@
                     </div>
                     <!-- /row -->
                 </div>
+                --}}
                 <!-- /container -->
             </div>
             <!-- /bg_color_1 -->
