@@ -66,7 +66,7 @@
                 <p>{{ $room["description"] }}</p>
                 <p><a href="{{ url("admin/listing/{$room['id']}") }}" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
                 <ul class="buttons">
-                  <li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+                  {{-- <li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li> --}}
                 </ul>
               </li>
             @endforeach

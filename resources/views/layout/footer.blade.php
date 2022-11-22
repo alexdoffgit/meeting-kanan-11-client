@@ -4,6 +4,7 @@
 				<div class="col-lg-5 col-md-12 p-r-5">
 					<p><img src="{{asset('img/logo.svg')}}" width="150" height="36" alt=""></p>
 					<p>Sewa virtual office, private office, shared office dengan lokasi prestisius di Surabaya dan paket jasa pembuatan PT & CV untuk bisnismu. tingkatkan kepercayaan customermu dengan alamat kantor yang prestisius bersama Graha Office Surabaya</p>
+					{{-- 
 					<div class="follow_us">
 						<ul>
 							<li>Follow us</li>
@@ -13,16 +14,14 @@
 							<li><a href="#0"><i class="ti-pinterest"></i></a></li>
 							<li><a href="#0"><i class="ti-instagram"></i></a></li>
 						</ul>
-					</div>
+					</div> 
+					--}}
 				</div>
 				<div class="col-lg-3 col-md-6 ml-lg-auto">
 					<h5>Useful links</h5>
 					<ul class="links">
-						<li><a href="about.html">About</a></li>
 						<li><a href="{{ url('/login') }}">Login</a></li>
 						<li><a href="{{ url('/register') }}">Register</a></li>
-						<li><a href="blog.html">News &amp; Events</a></li>
-						<li><a href="contacts.html">Contacts</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6">

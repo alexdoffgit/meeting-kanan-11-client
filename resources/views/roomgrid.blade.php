@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
+    @extends('layout.title')
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -95,9 +95,6 @@
 			
 			<section class="hero_in tours">
 				<div class="wrapper">
-					<div class="container">
-						<h1 class="fadeInUp"><span></span>Paris tours grid</h1>
-					</div>
 				</div>
 			</section>
 			<!--/hero_in-->
@@ -125,7 +122,7 @@
 							</div>
 						</li>
 						<li>
-							<a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on map</a>
+							{{-- preserve for layout --}}
 						</li>
 					</ul>
 				</div>
@@ -209,6 +206,7 @@
 			<!-- /container -->
 			
 			<div class="bg_color_1">
+				{{--
 				<div class="container margin_60_35">
 					<div class="row">
 						<div class="col-md-4">
@@ -235,6 +233,7 @@
 					</div>
 					<!-- /row -->
 				</div>
+				--}}
 				<!-- /container -->
 			</div>
 			<!-- /bg_color_1 -->
