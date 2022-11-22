@@ -11,7 +11,9 @@ class RoomController extends Controller
 {
     public function viewlisting(Request $request, $id)
     {
-        return view('admin.viewlisting');
+        $room = Room::find($id);
+
+        return view('admin.viewlisting', ['room' => $room]);
     }
 
     public function listing(Request $request)
