@@ -16,11 +16,13 @@ class AdminAuthenticate
      */
     public function handle(Request $request, Closure $next)
     {
-        if(
-            empty(auth()->user()) &&
-            auth()->user()->role != 'admin') {
+        if(empty(auth()->user())) {
+            return redirect('/admin/login');
+            
+            if(auth()->user()->role != 'admin') {
                 return redirect('/admin/login');
             }
+        }
 
         return $next($request);
     }
