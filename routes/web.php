@@ -13,6 +13,7 @@ use App\Http\Controllers\RoomDetailController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SortController;
+use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,9 +65,11 @@ Route::post('/wishlist/delete', [WishlistController::class, 'delete']);
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/', function() { return redirect('/admin/dashboard'); });
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('add-listing', [RoomController::class, 'createForm']);
-    Route::post('add-listing', [RoomController::class, 'create']);
-    Route::get('listings', [RoomController::class, 'listing'])->name('listings');
-    Route::get('listing/{id}', [RoomController::class, 'viewlisting']);
+    Route::get('/login', [AdminLoginController::class, 'index']);
+    Route::post('/login', [AdminLoginController::class, 'login']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth.admin');
+    Route::get('add-listing', [RoomController::class, 'createForm'])->middleware('auth.admin');
+    Route::post('add-listing', [RoomController::class, 'create'])->middleware('auth.admin');
+    Route::get('listings', [RoomController::class, 'listing'])->middleware('auth.admin')->name('listings');
+    Route::get('listing/{id}', [RoomController::class, 'viewlisting'])->middleware('auth.admin');
 });
