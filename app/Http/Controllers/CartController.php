@@ -6,15 +6,39 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Carbon;
 
+
 class CartController extends Controller
 {
     public function indexCart1(Request $request)
     {
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = env('MIDTRANS_IS_PRODUCTION');
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = env('MIDTRANS_IS_SANITIZED');
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = env('MIDTRANS_IS_3DS');
+ 
+
         $cart = new Cart();
 
         $userId = (!empty(auth()->user())) ? auth()->user()->id : null;
 
-        return view('cart1', ['carts' => $cart->cartData($userId)]);
+        $params = [
+                'transaction_details' => [
+                    'order_id' => uniqid(),
+                    'gross_amount' => $cart->cartData($userId)['total_price']
+                ]
+            ];
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        
+        session(['snap_token' => $snapToken]);
+
+        return view('cart1', [
+            'carts' => $cart->cartData($userId),
+        ]);
     }
 
     public function addToCart(Request $request)

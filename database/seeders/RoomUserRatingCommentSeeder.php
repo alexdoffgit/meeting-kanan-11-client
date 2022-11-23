@@ -59,7 +59,7 @@ class RoomUserRatingCommentSeeder extends Seeder
                 'location' => '2',
                 'description' => 'Proin luctus non tellus at hendrerit. Quisque finibus rutrum purus, ac fringilla nunc imperdiet non.',
                 'maxpeople' => 4,
-                'price' => 30.8
+                'price' => 30
             ],
             [
                 'id' => $r3Id,
@@ -67,7 +67,7 @@ class RoomUserRatingCommentSeeder extends Seeder
                 'location' => '3',
                 'description' => 'Nullam eget nisi metus. Cras malesuada, erat sed tincidunt hendrerit, nisl leo consequat justo, a.',
                 'maxpeople' => 6,
-                'price' => 17.7
+                'price' => 17
             ],
             [
                 'id' => $r4Id,
@@ -75,7 +75,7 @@ class RoomUserRatingCommentSeeder extends Seeder
                 'location' => '4',
                 'description' => 'Sed eu commodo erat, in tristique eros. Ut justo ipsum, convallis nec mattis sit amet.',
                 'maxpeople' => 5,
-                'price' => 66.1
+                'price' => 66
             ],
             [
                 'id' => $r5Id,
@@ -83,7 +83,7 @@ class RoomUserRatingCommentSeeder extends Seeder
                 'location' => '5',
                 'description' => 'Curabitur ipsum nulla, scelerisque eget volutpat eget, molestie id mi. In eget lacus quis nibh.',
                 'maxpeople' => 8,
-                'price' => 71.4
+                'price' => 71
             ]
         ]);
 

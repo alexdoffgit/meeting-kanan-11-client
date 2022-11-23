@@ -193,7 +193,7 @@
 								<li>To <span>{{$carts['to']}}</span></li>
 								<li>Guest <span>{{$carts['total_guest']}}</span></li>
 							</ul>
-							<a href="cart-2.html" class="btn_1 full-width purchase">Checkout</a>
+							<a href="{{ url('/cart2') }}" class="btn_1 full-width purchase">Checkout</a>
 							<div class="text-center"><small>No money charged in this step</small></div>
 						</div>
 					</aside>
