@@ -55,35 +55,35 @@ class RoomUserRatingCommentSeeder extends Seeder
         DB::table('rooms')->insert([
             [
                 'id' => $r2Id,
-                'room_name' => 'r2',
-                'location' => '2',
+                'room_name' => 'Ruang Meeting 1',
+                'location' => 'Lantai 2',
                 'description' => 'Proin luctus non tellus at hendrerit. Quisque finibus rutrum purus, ac fringilla nunc imperdiet non.',
                 'maxpeople' => 4,
-                'price' => 30
+                'price' => 90000
             ],
             [
                 'id' => $r3Id,
-                'room_name' => 'r3',
-                'location' => '3',
+                'room_name' => 'Ruang Meeting 2',
+                'location' => 'Lantai 3',
                 'description' => 'Nullam eget nisi metus. Cras malesuada, erat sed tincidunt hendrerit, nisl leo consequat justo, a.',
                 'maxpeople' => 6,
-                'price' => 17
+                'price' => 110000
             ],
             [
                 'id' => $r4Id,
-                'room_name' => 'r4',
-                'location' => '4',
+                'room_name' => 'Ruang Meeting 3',
+                'location' => 'Lantai 4',
                 'description' => 'Sed eu commodo erat, in tristique eros. Ut justo ipsum, convallis nec mattis sit amet.',
                 'maxpeople' => 5,
-                'price' => 66
+                'price' => 100000
             ],
             [
                 'id' => $r5Id,
-                'room_name' => 'r5',
-                'location' => '5',
+                'room_name' => 'Ruang Meeting 4',
+                'location' => 'Lantai 5',
                 'description' => 'Curabitur ipsum nulla, scelerisque eget volutpat eget, molestie id mi. In eget lacus quis nibh.',
                 'maxpeople' => 8,
-                'price' => 71
+                'price' => 170000
             ]
         ]);
 
