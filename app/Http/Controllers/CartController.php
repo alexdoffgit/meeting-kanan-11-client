@@ -34,10 +34,11 @@ class CartController extends Controller
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         
-        session(['snap_token' => $snapToken]);
+        // session(['snap_token' => $snapToken]);
 
         return view('cart1', [
             'carts' => $cart->cartData($userId),
+            'token' => $snapToken
         ]);
     }
 

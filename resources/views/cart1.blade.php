@@ -9,6 +9,12 @@
     <meta name="author" content="Ansonika">
     <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
 
+	<script 
+	 type="text/javascript" 
+	 src="https://app.sandbox.midtrans.com/snap/snap.js"
+	 data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}">
+	</script>
+
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
@@ -87,7 +93,7 @@
 	<main>
 		<div class="hero_in cart_section">
 			<div class="wrapper">
-				<div class="container">
+				{{-- <div class="container">
 					<div class="bs-wizard clearfix">
 						<div class="bs-wizard-step active">
 							<div class="text-center bs-wizard-stepnum">Your cart</div>
@@ -114,7 +120,7 @@
 						</div>
 					</div>
 					<!-- End bs-wizard -->
-				</div>
+				</div> --}}
 			</div>
 		</div>
 		<!--/hero_in-->
@@ -154,7 +160,7 @@
 											0%
 										</td>
 										<td>
-											<strong>{{$cart['price']}}$</strong>
+											<strong>Rp.{{$cart['price']}}</strong>
 										</td>
 										<td class="options" style="width:5%; text-align:center;">
 											<a href="#0" onclick="deletecart('{{ url('/cart/delete/'.$cart['id']) }}')"><i class="icon-trash"></i></a>
@@ -186,14 +192,14 @@
 					<aside class="col-lg-4" id="sidebar">
 						<div class="box_detail">
 							<div id="total_cart">
-								Total <span class="float-right">{{$carts['total_price']}}$</span>
+								Total <span class="float-right">Rp.{{$carts['total_price']}}</span>
 							</div>
 							<ul class="cart_details">
 								<li>From <span>{{$carts['from']}}</span></li>
 								<li>To <span>{{$carts['to']}}</span></li>
 								<li>Guest <span>{{$carts['total_guest']}}</span></li>
 							</ul>
-							<a href="{{ url('/cart2') }}" class="btn_1 full-width purchase">Checkout</a>
+							<button id="pay-button" class="btn_1 full-width purchase">Checkout</button>
 							<div class="text-center"><small>No money charged in this step</small></div>
 						</div>
 					</aside>
@@ -297,6 +303,15 @@
 	
 	<div id="toTop"></div><!-- Back to top button -->
 	
+	<script type="text/javascript">
+		// For example trigger on button clicked, or any time you need
+		var payButton = document.getElementById('pay-button');
+		payButton.addEventListener('click', function () {
+		// Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+			window.snap.pay('{{ $token }}');
+		// customer will be redirected after completing payment pop-up
+		});
+	</script>
 	<!-- COMMON SCRIPTS -->
     <script src="{{asset('js/common_scripts.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
