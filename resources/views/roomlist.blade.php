@@ -106,13 +106,13 @@
                         <li>
 							<div class="type-filter">
 								<a href="{{ url('/rooms/sort/all') }}">
-									<p>All</p>
+									<p>Semua</p>
 								</a>
 								<a href="{{ url('/rooms/sort/popular') }}">
-									<p>Popular</p>
+									<p>Populer</p>
 								</a>
 								<a href="{{ url('/rooms/sort/latest') }}">
-									<p>Latest</p>
+									<p>Terbaru</p>
 								</a>
 							</div>
                         </li>
@@ -142,19 +142,19 @@
                     <div class="row no-gutters custom-search-input-2 inner">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Room Name" name="roomName">
+                                <input class="form-control" type="text" placeholder="Nama Ruangan" name="roomName">
                                 <i class="icon_search"></i>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Where" name="location">
+                                <input class="form-control" type="text" placeholder="Lokasi" name="location">
                                 <i class="icon_pin_alt"></i>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <input type="number" name="maxpeople" placeholder="Guest" min="1" class="form-control">
+                                <input type="number" name="maxpeople" placeholder="Jumlah Tamu" min="1" class="form-control">
                                 <i class="icon_profile"></i>
                             </div>
                         </div>
@@ -188,7 +188,7 @@
                                     @endguest
                                     <h3><a href="{{url('/room/'.$room['id'])}}">{{$room['room_name']}}</a></h3>
                                     <p>{{$room['description']}}</p>
-                                    <span class="price">From <strong>{{$room['price']}}</strong> /per person</span>
+                                    <span class="price">Rp.<strong>{{$room['price']}}</strong> /per orang</span>
                                 </div>
                                 <ul>
                                     <li></li>

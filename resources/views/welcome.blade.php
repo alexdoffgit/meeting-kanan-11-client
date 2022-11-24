@@ -103,13 +103,13 @@
 						<div class="row no-gutters custom-search-input-2">
 							<div class="col-lg-4">
 								<div class="form-group">
-									<input class="form-control" type="text" name="roomName" placeholder="Room Name">
+									<input class="form-control" type="text" name="roomName" placeholder="Nama Ruangan">
 									<i class="icon_pin_alt"></i>
 								</div>
 							</div>
 							<div class="col-lg-4">
 								<div class="form-group">
-									<input class="form-control" type="text" name="maxpeople" placeholder="Room Capacity">
+									<input class="form-control" type="text" name="maxpeople" placeholder="Kapasitas Ruangan">
 									<i class="icon_plus"></i>
 								</div>
 							</div>
@@ -151,7 +151,7 @@
 						<div class="wrapper">
 							<h3><a href="{{url('/room'.'/'.$room['id'])}}">{{ $room['room_name'] }}</a></h3>
 							<p>{{ $room['description'] }}</p>
-							<span class="price">From <strong>${{ $room['price'] }}</strong> /per Ruangan</span>
+							<span class="price"><strong>Rp.{{ $room['price'] }}</strong> /per Ruangan</span>
 						</div>
 						<ul>
 							<li>{{-- this need to exist for layout --}}</li>

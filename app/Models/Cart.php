@@ -89,7 +89,8 @@ class Cart extends Model
                     })
                     ->sort()
                     ->first()
-                    ->format('d-m-y');
+                    ->locale('in-ID')
+                    ->format('l, j M Y');
 
                 $to = $collection
                     ->map(function($item, $key) {
@@ -97,7 +98,7 @@ class Cart extends Model
                     })
                     ->sortDesc()
                     ->first()
-                    ->format('d-m-y');
+                    ->format('l, j M Y');
 
                 return [
                     'carts' => $carts,
