@@ -21,7 +21,7 @@ class CreateBookingsTable extends Migration
             $table->timestampTz('booking_time_end')->nullable();
             $table->string('room_id')->nullable();
             $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('order_id')->constrained();
             $table->timestamps();
         });
     }
