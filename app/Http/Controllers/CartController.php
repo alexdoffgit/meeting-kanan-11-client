@@ -17,6 +17,12 @@ class CartController extends Controller
 
         $userId = (!empty(auth()->user())) ? auth()->user()->id : null;
 
+        if($cart->cartData($userId)["total_price"] == 0) {
+            session()->flash('isAbleToCheckOut', "no");
+        } else {
+            session()->flash('isAbleToCheckOut', "yes");
+        }
+
         return view('cart1', [
             'carts' => $cart->cartData($userId)
         ]);
@@ -59,44 +65,12 @@ class CartController extends Controller
 
     public function indexCart2(Request $request)
     {
-        $data = $request->validate([
-            "firstname_booking" => 'required',
-            "lastname_booking" => 'required',
-            "email_booking" => 'required|email',
-            "email_confirm" => 'required|email|same:email_booking',
-            "telephone_booking" => 'required|string',
-            "address" => 'required|string',
-            "city" => 'required|string',
-            "postal_code" => 'required|string',
-            "country_code" => 'required|string'
-        ]);
-
         $cart = new Cart();
 
         $userId = (!empty(auth()->user())) ? auth()->user()->id : null;
 
-        $token = new CreateSnapTokenService([
-                'transaction_details' => [
-                    'order_id' => uniqid(),
-                    'gross_amount' => $cart->cartData($userId)['total_price']
-                ],
-                'customer_details' => [
-                    'first_name' => $data['firstname_booking'],
-                    'last_name' => $data['lastname_booking'],
-                    'email' => $data['email_booking'],
-                    'phone' => $data['telephone_booking'],
-                    'billing_address' => [
-                        'address' => $data['address'],
-                        'city' => $data['city'],
-                        'postal_code' => $data['postal_code'],
-                        'country_code' => $data['country_code'],
-                    ]
-                ]
-            ]
-        );
-
         return view('cart2', [
-            'token' => $token->getSnapToken()
+            'carts' => $cart->cartData($userId)
         ]);
     }
 

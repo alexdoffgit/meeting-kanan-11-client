@@ -121,102 +121,102 @@
 
 			<div class="bg_color_1">
 				<div class="container margin_60_35">
-					<div class="row">
+					<form method="POST" action="{{ url('/checkout') }}" class="row">
 						<div class="col-lg-8">
 							<div class="box_cart">
-							<div class="message">
-								<p>Exisitng Customer? <a href="#0">Click here to login</a></p>
-							</div>
-							<div class="form_title">
-								<h3><strong>1</strong>Your Details</h3>
-								<p>
-									Mussum ipsum cacilds, vidis litro abertis.
-								</p>
-							</div>
-							<div class="step">
-								<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>First name</label>
-										<input type="text" class="form-control" id="firstname_booking" name="firstname_booking">
+								<div class="message">
+									<p>Exisitng Customer? <a href="#0">Click here to login</a></p>
+								</div>
+								<div class="form_title">
+									<h3><strong>1</strong>Your Details</h3>
+									<p>
+										Mussum ipsum cacilds, vidis litro abertis.
+									</p>
+								</div>
+								<div class="step">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>First name</label>
+												<input type="text" class="form-control" id="firstname_booking" name="firstname_booking">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>Last name</label>
+												<input type="text" class="form-control" id="lastname_booking" name="lastname_booking">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>Email</label>
+												<input type="email" id="email_booking" name="email_booking" class="form-control">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>Confirm email</label>
+												<input type="email" id="email_confirm" name="email_confirm" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>Telephone</label>
+												<input type="text" id="telephone_booking" name="telephone_booking" class="form-control">
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>Last name</label>
-										<input type="text" class="form-control" id="lastname_booking" name="lastname_booking">
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>Email</label>
-										<input type="email" id="email_booking" name="email_booking" class="form-control">
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>Confirm email</label>
-										<input type="email" id="email_confirm" name="email_confirm" class="form-control">
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>Telephone</label>
-										<input type="text" id="telephone_booking" name="telephone_booking" class="form-control">
-									</div>
-								</div>
-							</div>
-							</div>
-							<hr>
-							<!--End step -->
+								<hr>
+								<!--End step -->
 
-							<div class="form_title">
-								<h3><strong>2</strong>Billing Address</h3>
-								<p>
-									Mussum ipsum cacilds, vidis litro abertis.
-								</p>
-							</div>
-							<div class="step">
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>Address</label>
-											<input type="text" id="address" name="address" class="form-control">
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>City</label>
-											<input type="text" id="city" name="city" class="form-control">
-										</div>
-									</div>
+								<div class="form_title">
+									<h3><strong>2</strong>Billing Address</h3>
+									<p>
+										Mussum ipsum cacilds, vidis litro abertis.
+									</p>
 								</div>
-								<div class="row">
-									<div class="col-md-6 col-sm-12">
-										<div class="form-group">
-											<label>Postal Code</label>
-											<input type="text" id="postal_code" name="postal_code" class="form-control">
+								<div class="step">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>Address</label>
+												<input type="text" id="address" name="address" class="form-control">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>City</label>
+												<input type="text" id="city" name="city" class="form-control">
+											</div>
 										</div>
 									</div>
-									<div class="col-md-3 col-sm-6">
-										<div class="form-group">
-											<label></label>
-											<input type="hidden" id="country_code" name="country_code" value="IDN" class="form-control">
+									<div class="row">
+										<div class="col-md-6 col-sm-12">
+											<div class="form-group">
+												<label>Postal Code</label>
+												<input type="text" id="postal_code" name="postal_code" class="form-control">
+											</div>
+										</div>
+										<div class="col-md-3 col-sm-6">
+											<div class="form-group">
+												<label></label>
+												<input type="hidden" id="country_code" name="country_code" value="IDN" class="form-control">
+											</div>
 										</div>
 									</div>
+									<!--End row -->
 								</div>
-								<!--End row -->
-							</div>
-							<hr>
-							<!--End step -->
-							<div id="policy">
-								<h5>Cancellation policy</h5>
-								<p class="nomargin">Lorem ipsum dolor sit amet, vix <a href="#0">cu justo blandit deleniti</a>, discere omittantur consectetuer per eu. Percipit repudiare similique ad sed, vix ad decore nullam ornatus.</p>
-							</div>
+								<hr>
+								<!--End step -->
+								<div id="policy">
+									<h5>Cancellation policy</h5>
+									<p class="nomargin">Lorem ipsum dolor sit amet, vix <a href="#0">cu justo blandit deleniti</a>, discere omittantur consectetuer per eu. Percipit repudiare similique ad sed, vix ad decore nullam ornatus.</p>
+								</div>
 							</div>
 						</div>
 						<!-- /col -->
@@ -224,19 +224,18 @@
 						<aside class="col-lg-4" id="sidebar">
 							<div class="box_detail">
 								<div id="total_cart">
-									Total <span class="float-right">69.00$</span>
+									Total <span class="float-right">Rp.{{$carts['total_price']}}</span>
 								</div>
 								<ul class="cart_details">
-									<li>From <span>02-11-18</span></li>
-									<li>To <span>04-11-18</span></li>
-									<li>Adults <span>2</span></li>
-									<li>Childs <span>1</span></li>
+									<li>From <span>{{$carts['from']}}</span></li>
+									<li>To <span>{{$carts['to']}}</span></li>
+									<li>Guest <span>{{$carts['total_guest']}}</span></li>
 								</ul>
-								<a href="cart-3.html" class="btn_1 full-width purchase">Purchase</a>
+								<a href="{{ url('/checkout') }}" class="btn_1 full-width purchase">Purchase</a>
 								<div class="text-center"><small>No money charged in this step</small></div>
 							</div>
 						</aside>
-					</div>
+					</form>
 					<!-- /row -->
 				</div>
 				<!-- /container -->
@@ -340,6 +339,5 @@
     <script src="{{ asset('js/common_scripts.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 	<script src="{{ asset('assets/validate.js') }}"></script>
-  
 </body>
 </html>

@@ -7,13 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
-
-	<script 
-	 type="text/javascript" 
-	 src="https://app.sandbox.midtrans.com/snap/snap.js"
-	 data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}">
-	</script>
+    @extends('layout.title')
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -199,7 +193,7 @@
 									<li>To <span>{{$carts['to']}}</span></li>
 									<li>Guest <span>{{$carts['total_guest']}}</span></li>
 								</ul>
-								<button id="pay-button" class="btn_1 full-width purchase">Checkout</button>
+								<a href="{{ url('/cart2') }}" class="btn_1 full-width purchase">Checkout</a>
 								<div class="text-center"><small>No money charged in this step</small></div>
 							</div>
 						</aside>
@@ -303,15 +297,7 @@
 	
 	<div id="toTop"></div><!-- Back to top button -->
 	
-	<script type="text/javascript">
-		// For example trigger on button clicked, or any time you need
-		var payButton = document.getElementById('pay-button');
-		payButton.addEventListener('click', function () {
-		// Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-			window.snap.pay('{{ $token }}');
-		// customer will be redirected after completing payment pop-up
-		});
-	</script>
+	
 	<!-- COMMON SCRIPTS -->
     <script src="{{asset('js/common_scripts.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>

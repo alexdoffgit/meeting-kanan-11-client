@@ -14,6 +14,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SortController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,14 +55,16 @@ Route::post('search/grid', [SearchController::class, 'gridSearch']);
 Route::post('/search/list', [SearchController::class, 'listSearch']);
 
 Route::get('/cart1', [CartController::class, 'indexCart1']);
-Route::get('/cart2', [CartController::class, 'indexCart2']);
-Route::get('/cart3', [CartController::class, 'indexCart3']);
+Route::get('/cart2', [CartController::class, 'indexCart2'])->middleware('auth')->middleware('cart');
+Route::get('/cart3', [CartController::class, 'indexCart3'])->middleware('auth')->middleware('cart');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->middleware('auth');
 Route::delete('/cart/delete/{id}', [CartController::class, 'deleteCartItem']);
 
+Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth');
+
 Route::get('/wishlist', [WishlistController::class, 'index']);
 Route::post('/wishlist/add', [WishlistController::class, 'add'])->middleware('auth');
-Route::post('/wishlist/delete', [WishlistController::class, 'delete']);
+Route::post('/wishlist/delete', [WishlistController::class, 'delete'])->middleware('auth');
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/', function() { return redirect('/admin/dashboard'); });
