@@ -158,7 +158,7 @@
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label>Confirm email</label>
-										<input type="email" id="email_booking_2" name="email_booking_2" class="form-control">
+										<input type="email" id="email_confirm" name="email_confirm" class="form-control">
 									</div>
 								</div>
 							</div>
@@ -184,51 +184,28 @@
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label>Country</label>
-											<div class="custom-select-form">
-											<select class="wide add_bottom_15" name="country" id="country">
-												<option value="" selected>Select your country</option>
-												<option value="Europe">Europe</option>
-												<option value="United states">United states</option>
-												<option value="South America">South America</option>
-												<option value="Oceania">Oceania</option>
-												<option value="Asia">Asia</option>
-											</select>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>Street line 1</label>
-											<input type="text" id="street_1" name="street_1" class="form-control">
+											<label>Address</label>
+											<input type="text" id="address" name="address" class="form-control">
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
-											<label>Street line 2</label>
-											<input type="text" id="street_2" name="street_2" class="form-control">
+											<label>City</label>
+											<input type="text" id="city" name="city" class="form-control">
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-6 col-sm-12">
 										<div class="form-group">
-											<label>City</label>
-											<input type="text" id="city_booking" name="city_booking" class="form-control">
-										</div>
-									</div>
-									<div class="col-md-3 col-sm-6">
-										<div class="form-group">
-											<label>State</label>
-											<input type="text" id="state_booking" name="state_booking" class="form-control">
-										</div>
-									</div>
-									<div class="col-md-3 col-sm-6">
-										<div class="form-group">
-											<label>Postal code</label>
+											<label>Postal Code</label>
 											<input type="text" id="postal_code" name="postal_code" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-3 col-sm-6">
+										<div class="form-group">
+											<label></label>
+											<input type="hidden" id="country_code" name="country_code" value="IDN" class="form-control">
 										</div>
 									</div>
 								</div>
