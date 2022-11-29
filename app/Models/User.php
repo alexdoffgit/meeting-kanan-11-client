@@ -43,8 +43,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function bookedRooms() {
-        return $this->belongsToMany(Room::class, 'bookings');
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 
     public function roomsCart()
