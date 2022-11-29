@@ -12,9 +12,9 @@ class Room extends Model
 
     public $incrementing = false;
 
-    public function usersWhoBooked()
+    public function bookings()
     {
-        return $this->belongsToMany(User::class, 'bookings');
+        return $this->hasMany(Booking::class);
     }
 
     public function usersWhoWishlisted() {
