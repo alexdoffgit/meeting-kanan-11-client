@@ -4,7 +4,7 @@ namespace App\Services\Midtrans;
 
 use Midtrans\Snap;
 
-class CreateSnapTokenService extends Midtrans {
+class SnapService extends Midtrans {
     /**
      *  type array:
      *  [
@@ -40,5 +40,16 @@ class CreateSnapTokenService extends Midtrans {
         $snapToken = Snap::getSnapToken($this->order);
  
         return $snapToken;
+    }
+
+    public function getSnapRedirectUrl()
+    {
+        try {
+            $snapUrl = Snap::createTransaction($this->order)->redirect_url;
+
+            return $snapUrl;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
