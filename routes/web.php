@@ -60,7 +60,8 @@ Route::get('/cart3', [CartController::class, 'indexCart3'])->middleware('auth')-
 Route::post('/cart/add', [CartController::class, 'addToCart'])->middleware('auth');
 Route::delete('/cart/delete/{id}', [CartController::class, 'deleteCartItem']);
 
-Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth');
+Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth')->middleware('cart');
+Route::post('/midtrans-notification', [OrderController::class, 'receiveMidtransNotification']);
 
 Route::get('/wishlist', [WishlistController::class, 'index']);
 Route::post('/wishlist/add', [WishlistController::class, 'add'])->middleware('auth');
