@@ -31,6 +31,7 @@ class RegisterController extends Controller
         $user->last_name = $lastName;
         $user->email = $email;
         $user->password = Hash::make($password);
+        $user->role = 'user';
         $user->save();
 
         return redirect("/login");

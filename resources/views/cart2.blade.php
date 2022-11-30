@@ -122,6 +122,7 @@
 			<div class="bg_color_1">
 				<div class="container margin_60_35">
 					<form method="POST" action="{{ url('/checkout') }}" class="row">
+						@csrf
 						<div class="col-lg-8">
 							<div class="box_cart">
 								<div class="message">
@@ -231,7 +232,7 @@
 									<li>To <span>{{$carts['to']}}</span></li>
 									<li>Guest <span>{{$carts['total_guest']}}</span></li>
 								</ul>
-								<a href="{{ url('/checkout') }}" class="btn_1 full-width purchase">Purchase</a>
+								<button type="submit" class="btn_1 full-width purchase">Purchase</button>
 								<div class="text-center"><small>No money charged in this step</small></div>
 							</div>
 						</aside>
