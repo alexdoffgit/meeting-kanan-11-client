@@ -34,6 +34,13 @@
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- Navigation-->
   @extends('layout.admin.nav')
+
+  <div class="content-wrapper">
+    <div class="container-fluid">
+    
+    </div>
+  </div>
+
    <!-- Scroll to Top Button-->
    <a class="scroll-to-top rounded" href="#page-top">
     <i class="fa fa-angle-up"></i>
