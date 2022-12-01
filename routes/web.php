@@ -14,6 +14,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SortController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
+use App\Http\Controllers\Admin\RegisterController as AdminRegisterController;
 use App\Http\Controllers\OrderController;
 
 /*
@@ -27,7 +28,7 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/', [RoomsController::class, 'index']);
+Route::get('/', [RoomsController::class, 'index'])->middleware('checkadmin');
 
 Route::get('/register', [RegisterController::class, 'displayRegister']);
 Route::post('/register', [RegisterController::class, 'register']);
@@ -39,16 +40,16 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::post('/images/{id}', [BatchImageUploadController::class, 'store']);
 
-Route::get('rooms/grid', [RoomsController::class, 'roomGridIndex']);
-Route::get('rooms/list', [RoomsController::class, 'roomListIndex']);
+Route::get('/rooms/grid', [RoomsController::class, 'roomGridIndex']);
+Route::get('/rooms/list', [RoomsController::class, 'roomListIndex']);
 
-Route::get('rooms/sort/all', [SortController::class, 'all']);
-Route::get('rooms/sort/popular', [SortController::class, 'popular']);
-Route::get('rooms/sort/latest', [SortController::class, 'latest']);
+Route::get('/rooms/sort/all', [SortController::class, 'all']);
+Route::get('/rooms/sort/popular', [SortController::class, 'popular']);
+Route::get('/rooms/sort/latest', [SortController::class, 'latest']);
 
 
-Route::get('room/{id}', [RoomDetailController::class, 'index']);
-Route::post('room/{id}/comment', [RoomDetailController::class, 'postReview']);
+Route::get('/room/{id}', [RoomDetailController::class, 'index']);
+Route::post('/room/{id}/comment', [RoomDetailController::class, 'postReview']);
 
 Route::post('/search', [SearchController::class, 'homeSearch']);
 Route::post('search/grid', [SearchController::class, 'gridSearch']);
@@ -69,11 +70,13 @@ Route::post('/wishlist/delete', [WishlistController::class, 'delete'])->middlewa
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/', function() { return redirect('/admin/dashboard'); });
+    Route::get('/register', [AdminRegisterController::class, 'index']);
+    Route::post('/register', [AdminRegisterController::class, 'create']);
     Route::get('/login', [AdminLoginController::class, 'index']);
     Route::post('/login', [AdminLoginController::class, 'login']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth.admin');
-    Route::get('add-listing', [RoomController::class, 'createForm'])->middleware('auth.admin');
-    Route::post('add-listing', [RoomController::class, 'create'])->middleware('auth.admin');
-    Route::get('listings', [RoomController::class, 'listing'])->middleware('auth.admin')->name('listings');
-    Route::get('listing/{id}', [RoomController::class, 'viewlisting'])->middleware('auth.admin');
+    Route::get('/add-listing', [RoomController::class, 'createForm'])->middleware('auth.admin');
+    Route::post('/add-listing', [RoomController::class, 'create'])->middleware('auth.admin');
+    Route::get('/listings', [RoomController::class, 'listing'])->middleware('auth.admin')->name('listings');
+    Route::get('/listing/{id}', [RoomController::class, 'viewlisting'])->middleware('auth.admin');
 });
