@@ -2,13 +2,10 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class RoomUserCartSeeder extends Seeder
+class RoomSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,37 +14,6 @@ class RoomUserCartSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            [
-                'name' => 'adi',
-                'last_name' => 'putra',
-                'email' => 'adi@mail.com',
-                'role' => 'user',
-                'password' => Hash::make('adi')
-            ],
-            [
-                'name' => 'nana',
-                'last_name' => 'padji',
-                'email' => 'nana@mail.com',
-                'role' => 'user',
-                'password' => Hash::make('nana')
-            ],
-            [
-                'name' => 'ijat',
-                'last_name' => 'lala',
-                'email' => 'ijat@mail.com',
-                'role' => 'user',
-                'password' => Hash::make('ijat')
-            ],
-            [
-                'name' => 'fira',
-                'last_name' => 'author',
-                'email' => 'fira@mail.com',
-                'role' => 'admin',
-                'password' => Hash::make('heyngapainsu'),
-            ]
-        ]);
-
         $r2Id = uniqid();
         $r3Id = uniqid();
         $r4Id = uniqid();
@@ -153,26 +119,5 @@ class RoomUserCartSeeder extends Seeder
                 'room_id' => $r5Id
             ]
         ]);
-
-        DB::table('carts')->insert([
-            [            
-                'booking_day_start' => Carbon::now(),
-                'booking_day_end' => Carbon::now()->addDays(2),
-                'booking_time_start' => Carbon::now()->addHours(),
-                'booking_time_end' => Carbon::now()->addHours(3),
-                'room_id' => $r2Id,
-                'attendant' => 2,
-                'user_id' => 2
-            ],
-            [
-                'booking_day_start' => Carbon::now()->addWeek(),
-                'booking_day_end' => Carbon::now()->addWeek()->addDays(2),
-                'booking_time_start' => Carbon::now()->addWeek()->addHours(),
-                'booking_time_end' => Carbon::now()->addWeek()->addHours(3),
-                'room_id' => $r2Id,
-                'attendant' => 2,
-                'user_id' => 3
-            ]
-        ]); 
     }
 }
