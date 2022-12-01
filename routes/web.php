@@ -70,7 +70,7 @@ Route::post('/wishlist/delete', [WishlistController::class, 'delete'])->middlewa
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/', function() { return redirect('/admin/dashboard'); });
-    Route::get('/register', [AdminRegisterController::class, 'index']);
+    Route::get('/register', [AdminRegisterController::class, 'index'])->middleware('denymultiadmin');
     Route::post('/register', [AdminRegisterController::class, 'create']);
     Route::get('/login', [AdminLoginController::class, 'index']);
     Route::post('/login', [AdminLoginController::class, 'login']);
