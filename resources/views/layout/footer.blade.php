@@ -28,7 +28,7 @@
 					<h5>Contact with Us</h5>
 					<ul class="contacts">
 						<li><a href="tel://6283157578555"><i class="ti-mobile"></i> + 6283157578555</a></li>
-						<li><a href="mailto:okemeeting@gmail.com"><i class="ti-email"></i> grahameeting@gmail.com</a></li>
+						<li><a href="mailto:grahameeting@gmail.com"><i class="ti-email"></i> grahameeting@gmail.com</a></li>
 					</ul>
 				</div>
 			</div>
