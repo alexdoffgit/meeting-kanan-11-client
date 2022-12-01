@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="Ansonika">
-	<title>PANAGEA - Admin dashboard</title>
+	<title>PANAGEA - View</title>
 		
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -76,6 +76,17 @@
 								<div class="col-6">${{ $room->price }}</div>
 							</div>
 							<hr>
+							<div class="row">
+								<div class="col-6">{{-- Empty for layout --}}</div>
+								<div class="col-6">
+									<a
+									  href="{{ url("/admin/update-listing/{$room->id}") }}"
+									  class="btn btn-primary text-white"
+									  style="position: relative; bottom:18px">
+									    Update
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>			

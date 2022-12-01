@@ -92,4 +92,30 @@ class RoomController extends Controller
             return response('internal server error', 500);
         }
     }
+
+    public function viewUpdate(Request $request, $id)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'floor' => 'required',
+            'maxpeople' => 'required',
+            'price' => 'required'
+        ]);
+
+        $room = new Room();
+        $room->name = $data['name'];
+        $room->description = $data['description'];
+        $room->floor = $data['floor'];
+        $room->maxpeople = $data['maxpeople'];
+        $room->price = $data['price'];
+        $room->save();
+
+        return redirect("/listing/{$id}");
+    }
+
+    public function updateForm(Request $request, $id)
+    {
+        # code...
+    }
 }

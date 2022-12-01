@@ -16,6 +16,7 @@ use App\Http\Controllers\SortController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\RegisterController as AdminRegisterController;
 use App\Http\Controllers\OrderController;
+use App\Models\Room;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::post('/images/{id}', [BatchImageUploadController::class, 'store']);
+Route::post('/images/update/{id}', [BatchImageUploadController::class, 'update']);
 
 Route::get('/rooms/grid', [RoomsController::class, 'roomGridIndex']);
 Route::get('/rooms/list', [RoomsController::class, 'roomListIndex']);
@@ -77,6 +79,8 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth.admin');
     Route::get('/add-listing', [RoomController::class, 'createForm'])->middleware('auth.admin');
     Route::post('/add-listing', [RoomController::class, 'create'])->middleware('auth.admin');
+    Route::get('/update-listing/{id}', [RoomController::class, 'viewUpdate'])->middleware('auth.admin');
+    Route::post('/update-listing/{id}', [RoomController::class, 'updateForm'])->middleware('auth.admin');
     Route::get('/listings', [RoomController::class, 'listing'])->middleware('auth.admin')->name('listings');
     Route::get('/listing/{id}', [RoomController::class, 'viewlisting'])->middleware('auth.admin');
 });

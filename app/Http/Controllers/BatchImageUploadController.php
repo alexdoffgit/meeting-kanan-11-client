@@ -29,6 +29,25 @@ class BatchImageUploadController extends Controller
         return response('ok');
     }
 
+    public function update(Request $r, $id)
+    {
+        // i delete this because i can't figure out image update with dropzone
+        RoomImage::where('room_id', $id)->delete();
+
+        $thumbnail = $r->input('thumbnail');
+        $image = $r->file('file');
+        $ri = new RoomImage();
+
+        $ri->thumbnail = $thumbnail == 'true' ? true : false;
+        $ri->image_url = $this->fixImageUrl(
+            $image->store('public/room_images')
+        );
+        $ri->room_id = $id;
+        $ri->save();
+
+        return response('ok');
+    }
+
     private function fixImageUrl($imageUrl)
     {
         if($imageUrl) {
