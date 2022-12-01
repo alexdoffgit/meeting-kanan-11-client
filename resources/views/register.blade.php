@@ -51,7 +51,7 @@
 	<div id="login">
 		<aside>
 			<figure>
-				<a href="index.html"><img src="img/logo_sticky.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+				<a href="index.html"><img src="{{ asset('img/Logo-Graha-Meeting-Hitam.png') }}" width="120" height="36" data-retina="true" alt="" class="logo_sticky"></a>
 			</figure>
 			<form autocomplete="off" method="POST" action="{{ url('/register') }}">
                 @csrf
@@ -84,7 +84,6 @@
 				<button type="submit" class="btn_1 rounded full-width add_top_30">Register Now!</button>
 				<div class="text-center add_top_10">Already have an acccount? <strong><a href="{{ url('/login') }}">Sign In</a></strong></div>
 			</form>
-			<div class="copy">© 2018 Panagea</div>
 		</aside>
 	</div>
 	<!-- /login -->

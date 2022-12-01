@@ -51,16 +51,10 @@
 	<div id="login">
 		<aside>
 			<figure>
-				<a href="index.html"><img src="img/logo_sticky.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+				<a href="index.html"><img src="{{ asset('img/Logo-Graha-Meeting-Hitam.png') }}" width="120" height="36" data-retina="true" alt="" class="logo_sticky"></a>
 			</figure>
 			  <form method="POST" action="{{ url('/login') }}">
 				  @csrf
-				<div class="access_social">
-					<a href="#0" class="social_bt facebook">Login with Facebook</a>
-					<a href="#0" class="social_bt google">Login with Google</a>
-					<a href="#0" class="social_bt linkedin">Login with Linkedin</a>
-				</div>
-				<div class="divider"><span>Or</span></div>
 				<div class="form-group">
 					<label>Email</label>
 					<input type="email" class="form-control" name="email" id="email">
@@ -83,7 +77,6 @@
 				<button type="submit" class="btn_1 rounded full-width">Login</button>
 				<div class="text-center add_top_10">New to Panagea? <strong><a href="{{ url('/register') }}">Sign up!</a></strong></div>
 			</form>
-			<div class="copy">© 2018 Panagea</div>
 		</aside>
 	</div>
 	<!-- /login -->

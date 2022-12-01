@@ -2,7 +2,7 @@
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-5 col-md-12 p-r-5">
-					<p><img src="{{asset('img/logo.svg')}}" width="150" height="36" alt=""></p>
+					<p><img src="{{asset('img/Logo-Graha-Meeting-Putih.png')}}" width="120" height="36" alt=""></p>
 					<p>Sewa virtual office, private office, shared office dengan lokasi prestisius di Surabaya dan paket jasa pembuatan PT & CV untuk bisnismu. tingkatkan kepercayaan customermu dengan alamat kantor yang prestisius bersama Graha Office Surabaya</p>
 					{{-- 
 					<div class="follow_us">

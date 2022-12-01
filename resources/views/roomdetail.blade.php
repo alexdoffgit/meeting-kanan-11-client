@@ -47,8 +47,8 @@
 		<header class="header menu_fixed">
 			<div id="logo">
 				<a href="{{url('/')}}">
-					<img src="{{asset('img/logo.svg')}}" width="150" height="36" alt="" class="logo_normal">
-					<img src="{{asset('img/logo_sticky.svg')}}" width="150" height="36" alt="" class="logo_sticky">
+					<img src="{{asset('img/Logo-Graha-Meeting-Putih.png')}}" width="120" height="36" alt="" class="logo_normal">
+					<img src="{{asset('img/Logo-Graha-Meeting-Hitam.png')}}" width="120" height="36" alt="" class="logo_sticky">
 				</a>
 			</div>
 			<ul id="top_menu">
