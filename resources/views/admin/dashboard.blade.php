@@ -27,6 +27,8 @@
   <link href="{{ asset('admin-style/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
   <link href="{{ asset('admin-style/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+  <!-- Year Picker -->
+  <link href="{{ asset('admin-style/vendor/yearpicker.css') }}" rel="stylesheet">
   <!-- Your custom styles -->
   <link href="{{ asset('admin-style/css/custom.css') }}" rel="stylesheet">
 </head>
@@ -45,7 +47,25 @@
         </ol>
 
         <div class="box_general padding_bottom">
+
+          <form action="{{ url('/admin/dashboard/filter') }}" method="post" class="form-group">
+            @csrf
+            <input 
+              type="text" 
+              id="yearpicker"
+              {{-- class="form-control" --}}
+              style="padding: .375rem .75rem; border: 1px solid #ced4da; border-radius: .25rem;"
+              value=""
+              name="year"
+              placeholder="filter by year">
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+          <hr>
+
+          <!-- top 3 card -->
           <div class="row">
+
+            <!-- Success Card -->
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
@@ -54,6 +74,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- Cancel Card -->
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
@@ -62,6 +84,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- Pending Cart -->
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
@@ -72,16 +96,23 @@
             </div>
           </div>
           <br>
+
+          <!-- graph -->
           <div class="row">
-            <div class="col-6">
+            <div class="col">
               <canvas id="success-transaction"></canvas>
             </div>
-            <div class="col-6">
-              <h5>How Many Time Room is Ordered</h5>
-              <table class="table">
+          </div>
+          <br>
+
+          <hr>
+          <!-- datatables -->
+          <div class="row">
+            <div class="col">
+              <h5 style="margin-left:12px;">How Many Time Room is Ordered</h5>
+              <table class="table" id="order-count">
                 <thead>
                   <tr>
-                    <th scope="row">#</th>
                     <th>Room Name</th>
                     <th>Order Count</th>
                   </tr>
@@ -89,7 +120,6 @@
                 <tbody>
                   @foreach ($ordersCount as $roomName => $count)
                     <tr>
-                      <th scope="row">{{$loop->index + 1}}</th>
                       <td>{{ $roomName }}</td>
                       <td>{{ $count }}</td>
                     </tr>
@@ -98,6 +128,7 @@
               </table>
             </div>
           </div>
+
         </div>
     </div>
   </div>
@@ -136,9 +167,31 @@
   <script src="{{ asset('admin-style/vendor/jquery.selectbox-0.2.js') }}"></script>
   <script src="{{ asset('admin-style/vendor/retina-replace.min.js') }}"></script>
   <script src="{{ asset('admin-style/vendor/jquery.magnific-popup.min.js') }}"></script>
+  <script src="{{ asset('admin-style/vendor/yearpicker.js') }}"></script>
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('admin-style/js/admin.js') }}"></script>
   <script>
+    $(document).ready(function () {
+      $('#order-count').DataTable();
+    });
+  </script>
+  <script>
+    $('#yearpicker').yearpicker();
+  </script>
+  <script>
+    var priceData = [
+                  @forelse ($incomes as $successPay)
+                    {{$successPay['total_price']}},
+                  @empty
+                  @endforelse
+                ];
+    var priceDataNullCounter = 0;
+    for(let pd of priceData) {
+      if(pd === 0) {
+        priceDataNullCounter += 1;
+      }
+    }
+    var priceDataAvailable = priceDataNullCounter !== priceData.length
     var ctx = document.getElementById('success-transaction').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -148,11 +201,7 @@
                       'Nov', 'Des'],
             datasets: [{
                 label: 'Total Successful Room Purchase',
-                data: [
-                  @foreach ($incomes as $successPay)
-                    {{$successPay['total_price']}},
-                  @endforeach
-                ],
+                data: priceData,
                 backgroundColor: 'rgba(51,133,73,0.8)',
                 borderColor: '#2c6c3d'
             }]
@@ -160,6 +209,7 @@
         options: {
             scales: {
                 yAxes: [{
+                    display: priceDataAvailable ? true : false,
                     ticks: {
                         beginAtZero: true,
                         callback: function(value, index, values) {

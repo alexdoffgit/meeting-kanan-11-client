@@ -20,11 +20,13 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
-        $incomeData = $this->repo->IncomeDataGraphData();
-        $cancelData = $this->repo->oneYearCancelData();
-        $pendingData = $this->repo->oneYearPendingData();
-        $successData = $this->repo->oneYearSuccessData();
-        $orderCount = $this->repo->roomOrderQuantity();
+        $year = !empty(session()->has('year')) ? session()->get('year') : '2023';
+
+        $incomeData = $this->repo->IncomeDataGraphData($year);
+        $cancelData = $this->repo->oneYearCancelData($year);
+        $pendingData = $this->repo->oneYearPendingData($year);
+        $successData = $this->repo->oneYearSuccessData($year);
+        $orderCount = $this->repo->roomOrderQuantity($year);
 
         return view('admin.dashboard', [
             'incomes' => $incomeData,
@@ -34,10 +36,11 @@ class DashboardController extends Controller
             'ordersCount' => $orderCount
         ]);
     }
-}
 
-// 1. grafik sukses
-// 2. graph cancel
-// 3. jumlah order deny
-// 4. graph total pemasukan
-// 5. tabel kuantitas pemesanan ruangan
+    public function filter(Request $request)
+    {
+        $year = !empty($request->year) ? $request->year : '2023';
+
+        return redirect('/admin/dashboard')->with('year', $year);
+    }
+}

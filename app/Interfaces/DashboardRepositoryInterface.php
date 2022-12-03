@@ -3,11 +3,11 @@
 namespace App\Interfaces;
 
 interface DashboardRepositoryInterface {
-    public function IncomeDataGraphData();
-    public function oneYearCancelData();
-    public function oneYearPendingData();
-    public function oneYearSuccessData();
-    public function roomOrderQuantity();
+    public function IncomeDataGraphData($year);
+    public function oneYearCancelData($year);
+    public function oneYearPendingData($year);
+    public function oneYearSuccessData($year);
+    public function roomOrderQuantity($year);
 }
 
 // 1. grafik sukses

@@ -7,15 +7,15 @@ use App\Models\Room;
 use App\Interfaces\DashboardRepositoryInterface;
 
 class DashboardRepository implements DashboardRepositoryInterface {
-    public function IncomeDataGraphData()
+    public function IncomeDataGraphData($year)
     {
         $order = new Order();
         $settled = $order
             ->where('status', 'settlement')
             ->get();
 
-        $yearlyOrder = $settled->filter(function ($order, $key) {
-            return $order->created_at->format('Y') == '2023';
+        $yearlyOrder = $settled->filter(function ($order, $key) use ($year) {
+            return $order->created_at->format('Y') == $year;
         });
 
         $graphData = [
@@ -99,40 +99,49 @@ class DashboardRepository implements DashboardRepositoryInterface {
     }
 
     // TODO: add filter by year
-    public function oneYearCancelData()
+    public function oneYearCancelData($year)
     {
         $order = new Order();
         $cancel = $order
             ->where('status', 'cancel')
             ->get()
+            ->filter(function ($order, $key) use ($year) {
+                return $order->created_at->format('Y') == $year;
+            })
             ->count();
         return $cancel;
     }
 
     // TODO: add filter by year
-    public function oneYearPendingData() 
+    public function oneYearPendingData($year) 
     {
         $order = new Order();
         $pending = $order
             ->where('status', 'pending')
             ->get()
+            ->filter(function ($order, $key) use ($year) {
+                return $order->created_at->format('Y') == $year;
+            })
             ->count();
         return $pending;
     }
 
     // TODO: add filter by year
-    public function oneYearSuccessData()
+    public function oneYearSuccessData($year)
     {
         $order = new Order();
         $success = $order
             ->where('status', 'settlement')
             ->get()
+            ->filter(function ($order, $key) use ($year) {
+                return $order->created_at->format('Y') == $year;
+            })
             ->count();
         return $success;
     }
 
     // TODO: add filter by year
-    public function roomOrderQuantity()
+    public function roomOrderQuantity($year)
     {
         $roomsName = Room::all('room_name')
             ->map(function($room, $key) {
@@ -146,7 +155,12 @@ class DashboardRepository implements DashboardRepositoryInterface {
             $roomOrderQuantity[$roomName] = 0;
         }
 
-        foreach(Order::all() as $order) {
+        $yearlyOrder = Order::all()
+            ->filter(function ($order, $key) use ($year) {
+                return $order->created_at->format('Y') == $year;
+            });
+
+        foreach($yearlyOrder as $order) {
             foreach($order->bookings as $booking) {
                 $roomName = $booking->room->room_name;
 

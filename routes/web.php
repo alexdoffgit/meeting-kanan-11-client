@@ -77,6 +77,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/login', [AdminLoginController::class, 'index']);
     Route::post('/login', [AdminLoginController::class, 'login']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth.admin');
+    Route::post('/dashboard/filter', [DashboardController::class, 'filter'])->middleware('auth.admin');
     Route::get('/add-listing', [RoomController::class, 'createForm'])->middleware('auth.admin');
     Route::post('/add-listing', [RoomController::class, 'create'])->middleware('auth.admin');
     Route::get('/update-listing/{id}', [RoomController::class, 'viewUpdate'])->middleware('auth.admin');
