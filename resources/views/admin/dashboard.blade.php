@@ -48,6 +48,7 @@
 
         <div class="box_general padding_bottom">
 
+          <!-- filter form -->
           <form action="{{ url('/admin/dashboard/filter') }}" method="post" class="form-group">
             @csrf
             <input 
@@ -69,7 +70,7 @@
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Success Order Count</p>
+                  <p class="card-title">Success Order Count at {{session('year')}}</p>
                   <h5 class="card-text">{{ $success }}</h5>
                 </div>
               </div>
@@ -79,7 +80,7 @@
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Cancel Order Count</p>
+                  <p class="card-title">Cancel Order Count at {{session('year')}}</p>
                   <h5 class="card-text">{{ $cancel }}</h5>
                 </div>
               </div>
@@ -89,7 +90,7 @@
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Pending Order Count</p>
+                  <p class="card-title">Pending Order Count at {{session('year')}}</p>
                   <h5 class="card-text">{{ $pending }}</h5>
                 </div>
               </div>
@@ -109,7 +110,7 @@
           <!-- datatables -->
           <div class="row">
             <div class="col">
-              <h5 style="margin-left:12px;">How Many Time Room is Ordered</h5>
+              <h5 style="margin-left:12px;">How Many Time Room is Ordered at {{session('year')}}</h5>
               <table class="table" id="order-count">
                 <thead>
                   <tr>
@@ -138,23 +139,7 @@
     <i class="fa fa-angle-up"></i>
   </a>
   <!-- Logout Modal-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  @extends('layout.admin.logout')
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('admin-style/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('admin-style/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -200,7 +185,7 @@
                       'Jun', 'Jul', 'Aug', 'Sep', 'Oct',
                       'Nov', 'Des'],
             datasets: [{
-                label: 'Total Successful Room Purchase',
+                label: "Total Successful Room Purchase at {{session('year')}}",
                 data: priceData,
                 backgroundColor: 'rgba(51,133,73,0.8)',
                 borderColor: '#2c6c3d'

@@ -7,6 +7,7 @@ use App\Interfaces\DashboardRepositoryInterface;
 use App\Models\Booking;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class DashboardController extends Controller
@@ -20,7 +21,13 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
-        $year = !empty(session()->has('year')) ? session()->get('year') : '2023';
+        if(!session()->has('year')) {
+            session()->flash('year', Carbon::now()->format('Y'));
+        } else {
+            session()->reflash();
+        }
+
+        $year = session()->get('year');
 
         $incomeData = $this->repo->IncomeDataGraphData($year);
         $cancelData = $this->repo->oneYearCancelData($year);
@@ -39,8 +46,10 @@ class DashboardController extends Controller
 
     public function filter(Request $request)
     {
-        $year = !empty($request->year) ? $request->year : '2023';
+        $data = $request->validate([
+            'year' => 'required'
+        ]);
 
-        return redirect('/admin/dashboard')->with('year', $year);
+        return redirect('/admin/dashboard')->with('year', $data['year']);
     }
 }
