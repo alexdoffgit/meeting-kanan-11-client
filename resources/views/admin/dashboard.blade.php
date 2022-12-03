@@ -38,6 +38,67 @@
   <div class="content-wrapper">
     <div class="container-fluid">
     
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">
+            <a href="#">Dashboard</a>
+          </li>
+        </ol>
+
+        <div class="box_general padding_bottom">
+          <div class="row">
+            <div class="col-4">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Success Order Count</p>
+                  <h5 class="card-text">{{ $success }}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Cancel Order Count</p>
+                  <h5 class="card-text">{{ $cancel }}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-title">Pending Order Count</p>
+                  <h5 class="card-text">{{ $pending }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-6">
+              <canvas id="success-transaction"></canvas>
+            </div>
+            <div class="col-6">
+              <h5>How Many Time Room is Ordered</h5>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="row">#</th>
+                    <th>Room Name</th>
+                    <th>Order Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($ordersCount as $roomName => $count)
+                    <tr>
+                      <th scope="row">{{$loop->index + 1}}</th>
+                      <td>{{ $roomName }}</td>
+                      <td>{{ $count }}</td>
+                    </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 
@@ -77,6 +138,39 @@
   <script src="{{ asset('admin-style/vendor/jquery.magnific-popup.min.js') }}"></script>
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('admin-style/js/admin.js') }}"></script>
-  
+  <script>
+    var ctx = document.getElementById('success-transaction').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 
+                      'Jun', 'Jul', 'Aug', 'Sep', 'Oct',
+                      'Nov', 'Des'],
+            datasets: [{
+                label: 'Total Successful Room Purchase',
+                data: [
+                  @foreach ($incomes as $successPay)
+                    {{$successPay['total_price']}},
+                  @endforeach
+                ],
+                backgroundColor: 'rgba(51,133,73,0.8)',
+                borderColor: '#2c6c3d'
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function(value, index, values) {
+                          return 'Rp.' + value;
+                        }
+                    }
+                }]
+            }
+        }
+    });
+  </script>
+
 </body>
 </html>
