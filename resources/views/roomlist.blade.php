@@ -201,7 +201,7 @@
                 </div>
                 <!-- /isotope-wrapper -->
                 
-                <p class="text-center add_top_30"><a href="#0" class="btn_1 rounded">Load more</a></p>
+                <!-- <p class="text-center add_top_30"><a href="#0" class="btn_1 rounded">Load more</a></p> -->
             
             </div>
             <!-- /container -->

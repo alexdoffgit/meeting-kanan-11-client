@@ -170,7 +170,7 @@
 				@endforeach
 			</div>
 			<!-- /carousel -->
-			<p class="btn_home_align"><a href="tours-grid-isotope.html" class="btn_1 rounded">View all Rooms</a></p>
+			<p class="btn_home_align"><a href="{{ url('/rooms/grid') }}" class="btn_1 rounded">View all Rooms</a></p>
 			{{-- some random line --}}
 			{{-- <hr class="large"> --}}
 		</div>
