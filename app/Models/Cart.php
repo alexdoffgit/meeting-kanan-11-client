@@ -55,11 +55,13 @@ class Cart extends Model
                 $guest = $item
                     ->attendant;
 
-                $bookingDateStart = $item
-                    ->booking_day_start;
+                $bookingDateStart = new Carbon($item
+                    ->booking_day_start);
 
-                $bookingDateEnd = $item
-                    ->booking_day_end;
+                $bookingDateEnd = new Carbon($item
+                    ->booking_day_end);
+
+                $diff = intval($bookingDateEnd->floatDiffInDays($bookingDateStart));
 
                 return [
                     'id' => $cartId,
@@ -67,7 +69,7 @@ class Cart extends Model
                     'image_icon' => $roomImageIcon,
                     'date_start' => new Carbon($bookingDateStart),
                     'date_end' => new Carbon($bookingDateEnd),
-                    'price' => $roomPrice,
+                    'price' => $roomPrice * $diff,
                     'guest' => $guest
                 ];
             })

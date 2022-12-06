@@ -20,8 +20,6 @@ class AdminAuthenticate
             return redirect('/admin/login');
         }
 
-        dd(auth()->user());
-
         return $next($request);
     }
 }

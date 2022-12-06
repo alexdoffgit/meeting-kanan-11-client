@@ -280,7 +280,7 @@
 								@csrf
 								<input type="hidden" name="id" value="{{ $room['id'] }}">
 								<div class="price">
-									<span>Rp.{{$room['price']}}<small>/orang</small></span>
+									<span>Rp.{{$room['price']}}<small>/hari</small></span>
 									<div class="score"><span>Good<em>{{$room['ratingCount']}} Reviews</em></span><strong>{{$room['averageRating']}}</strong></div>
 								</div>
 								<div class="form-group input-dates">

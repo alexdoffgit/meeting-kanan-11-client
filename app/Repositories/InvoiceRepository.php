@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Interfaces\InvoiceRepositoryInterface;
 use App\Models\Cart;
 use Carbon\Carbon;
+use SebastianBergmann\Diff\Diff;
 
 class InvoiceRepository implements InvoiceRepositoryInterface {
     public function invoiceData()
@@ -14,6 +15,8 @@ class InvoiceRepository implements InvoiceRepositoryInterface {
             ->map(function($cart, $key) {
                 $dateStart = new Carbon($cart->booking_day_start);
                 $dateEnd = new Carbon($cart->booking_day_end);
+
+                $diff = intval($dateEnd->floatDiffInDays($dateStart));
 
                 $timeStart = new Carbon($cart->booking_time_start);
                 $timeEnd = new Carbon($cart->booking_time_end);
@@ -25,7 +28,7 @@ class InvoiceRepository implements InvoiceRepositoryInterface {
                     'time_end' => $timeEnd->format('H:i'),
                     'attendant' => $cart->attendant,
                     'room_name' => $cart->room->room_name,
-                    'price' => $cart->room->price
+                    'price' => $cart->room->price * $diff
                 ];
             })
             ->pipe(function($invoiceCollection) {

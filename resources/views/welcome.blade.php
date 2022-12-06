@@ -157,7 +157,7 @@
 							<div class="wrapper">
 								<h3><a href="{{url('/room'.'/'.$room['id'])}}">{{ $room['room_name'] }}</a></h3>
 								<p>{{ $room['description'] }}</p>
-								<span class="price"><strong>Rp.{{ $room['price'] }}</strong> /per Ruangan</span>
+								<span class="price"><strong>Rp.{{ $room['price'] }}</strong> /per Hari</span>
 							</div>
 							<ul>
 								<li>{{-- this need to exist for layout --}}</li>
