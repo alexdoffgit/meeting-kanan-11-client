@@ -56,3 +56,8 @@
 .type-filter a p.checked {
 	color: rgba(0, 0, 0, 0.9);
 }
+
+.avatar {
+	max-width: 30px;
+	border-radius: 15px;
+}

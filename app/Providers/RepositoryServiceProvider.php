@@ -13,6 +13,9 @@ use App\Repositories\RoomRepository;
 use App\Interfaces\DashboardRepositoryInterface;
 use App\Repositories\DashboardRepository;
 
+use App\Interfaces\InvoiceRepositoryInterface;
+use App\Repositories\InvoiceRepository;
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -25,6 +28,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SearchRepositoryInterface::class, SearchRepository::class);
         $this->app->bind(RoomRepositoryInterface::class, RoomRepository::class);
         $this->app->bind(DashboardRepositoryInterface::class, DashboardRepository::class);
+        $this->app->bind(InvoiceRepositoryInterface::class, InvoiceRepository::class);
     }
 
     /**

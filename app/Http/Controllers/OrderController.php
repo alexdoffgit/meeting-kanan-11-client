@@ -17,50 +17,25 @@ class OrderController extends Controller
     public function checkout(Request $request)
     {
         try {
-            $data = $request->validate([
-                "firstname_booking" => 'required',
-                "lastname_booking" => 'required',
-                "email_booking" => 'required|email',
-                "email_confirm" => 'required|email|same:email_booking',
-                "telephone_booking" => 'required|string',
-                "address" => 'required|string',
-                "city" => 'required|string',
-                "postal_code" => 'required|string',
-                "country_code" => 'required|string'
-            ]);
-    
+            session()->reflash();
+
             $cart = new Cart();
     
             $userId = (!empty(auth()->user())) ? auth()->user()->id : null;
             
-            $orderId = uniqid();
+            $orderSig = $this->createOrder(session('payment_id'));
 
             $snap = new SnapService([
                     'transaction_details' => [
-                        'order_id' => $orderId,
+                        'order_id' => $orderSig['payment_id'],
                         'gross_amount' => $cart->cartData($userId)['total_price']
-                    ],
-                    'customer_details' => [
-                        'first_name' => $data['firstname_booking'],
-                        'last_name' => $data['lastname_booking'],
-                        'email' => $data['email_booking'],
-                        'phone' => $data['telephone_booking'],
-                        'billing_address' => [
-                            'address' => $data['address'],
-                            'city' => $data['city'],
-                            'postal_code' => $data['postal_code'],
-                            'country_code' => $data['country_code'],
-                        ]
                     ]
                 ]
             );
 
             $redirectUrl = $snap->getSnapRedirectUrl();
-
-            $this->addToOrder($orderId);
-
-            $this->addToBooking($orderId);
             
+            $this->addToBooking($orderSig['id']);
             $this->emptyUserCart();
 
             return redirect()->away($redirectUrl);
@@ -112,19 +87,24 @@ class OrderController extends Controller
         }
     }
 
-    private function addToOrder($orderId)
+    public function createOrder($paymentId)
     {
         $order = new Order();
-        $order->payment_order_id = $orderId;
+        $order->payment_order_id = $paymentId;
         $order->status = 'pending';
         $order->user_id = auth()->user()->id;
         $order->save();
+
+        return [
+            "id" => $order->id,
+            "payment_id" => $order->payment_order_id
+        ];
     }
 
     private function addToBooking($orderId)
     {
         $userCart = Cart::where('user_id', auth()->user()->id)->get();
-        $order = Order::where('payment_order_id', $orderId)->first();
+        $order = Order::find($orderId);
 
         foreach($userCart as $c) {
             Booking::create([
