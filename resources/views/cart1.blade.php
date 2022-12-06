@@ -131,9 +131,6 @@
 											Item
 										</th>
 										<th>
-											Discount
-										</th>
-										<th>
 											Price
 										</th>
 										<th>
@@ -151,9 +148,6 @@
 												<span class="item_cart">{{$cart['room_name']}}</span>
 											</td>
 											<td>
-												0%
-											</td>
-											<td>
 												<strong>Rp.{{$cart['price']}}</strong>
 											</td>
 											<td class="options" style="width:5%; text-align:center;">
@@ -165,17 +159,17 @@
 							</table>
 							<div class="cart-options clearfix">
 								<div class="float-left">
-									<div class="apply-coupon">
+									{{-- <div class="apply-coupon">
 										<div class="form-group">
 											<input type="text" name="coupon-code" value="" placeholder="Your Coupon Code" class="form-control">
 										</div>
 										<div class="form-group">
 											<button type="button" class="btn_1 outline">Apply Coupon</button>
 										</div>
-									</div>
+									</div> --}}
 								</div>
 								<div class="float-right fix_mobile">
-									<button type="button" class="btn_1 outline">Update Cart</button>
+									{{-- <button type="button" class="btn_1 outline">Update Cart</button> --}}
 								</div>
 							</div>
 							<!-- /cart-options -->
@@ -193,7 +187,7 @@
 									<li>To <span>{{$carts['to']}}</span></li>
 									<li>Guest <span>{{$carts['total_guest']}}</span></li>
 								</ul>
-								<a href="{{ url('/cart2') }}" class="btn_1 full-width purchase">Checkout</a>
+								<a href="{{ url('/invoice') }}" class="btn_1 full-width purchase">Checkout</a>
 								<div class="text-center"><small>No money charged in this step</small></div>
 							</div>
 						</aside>

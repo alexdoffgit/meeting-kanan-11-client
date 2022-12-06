@@ -41,144 +41,151 @@
 		
 	<div id="page">
 		
-	<header class="header menu_fixed">
-		<div id="logo">
-			<a href="{{url('/')}}">
-				<img src="{{asset('img/Logo-Graha-Meeting-Putih.png')}}" width="120" height="36" alt="" class="logo_normal">
-				<img src="{{asset('img/Logo-Graha-Meeting-Hitam.png')}}" width="120" height="36" alt="" class="logo_sticky">
-			</a>
-		</div>
-		<ul id="top_menu">
-			<li><a href="{{url('/cart1')}}" class="cart-menu-btn" title="Cart">{{-- <strong>4</strong> --}}</a></li>
-			@guest				
-				<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
-			@endguest
-			@auth
-				<li>
-					<form action="{{ url('/logout') }}" method="post">
-						@csrf
-						<button type="submit" id="logout">
-							<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g clip-path="url(#clip0_101_148)">
-									<path d="M0.5 10.5H11.5M11.5 10.5L7.5 6.5M11.5 10.5L7.5 14.5M3.5 6V2.5C3.5 1.39543 4.39543 0.5 5.5 0.5H18.5C19.6046 0.5 20.5 1.39543 20.5 2.5V10.5V18.5C20.5 19.6046 19.6046 20.5 18.5 20.5H10H5.5V20.5C4.39543 20.5 3.5 19.6046 3.5 18.5V15" stroke="#D80C0C"/>
-								</g>
-								<defs>
-									<clipPath id="clip0_101_148">
-										<rect width="21" height="21" fill="white"/>
-									</clipPath>
-								</defs>
-							</svg>
-						</button>
-					</form>
-				</li>
-			@endauth
-			<li><a href="{{url('/wishlist')}}" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
-		</ul>
-		<!-- /top_menu -->
-		<a href="#menu" class="btn_mobile">
-			<div class="hamburger hamburger--spin" id="hamburger">
-				<div class="hamburger-box">
-					<div class="hamburger-inner"></div>
-				</div>
-			</div>
-		</a>
-		<nav id="menu" class="main-menu">
-			<ul>
-				<li><span><a href="{{url('/')}}">Home</a></span></li>
-				<li><span><a href="{{url('/rooms/grid')}}">Room</a></span>
-			</ul>
-		</nav>
-
-	</header>
-	<!-- /header -->
+		<header class="header menu_fixed">
+            <div id="logo">
+                <a href="{{url('/')}}">
+                    <img src="{{asset('img/Logo-Graha-Meeting-Putih.png')}}" width="120" height="36" alt="" class="logo_normal">
+					<img src="{{asset('img/Logo-Graha-Meeting-Hitam.png')}}" width="120" height="36" alt="" class="logo_sticky">
+                </a>
+            </div>
+            <ul id="top_menu">
+                <li><a href="{{url('/cart1')}}" class="cart-menu-btn" title="Cart">{{-- <strong>4</strong> --}}</a></li>
+                @guest				
+                    <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+                @endguest
+                @auth
+                    <li>
+                        <form action="{{ url('/logout') }}" method="post">
+                            @csrf
+                            <button type="submit" id="logout">
+                                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_101_148)">
+                                        <path d="M0.5 10.5H11.5M11.5 10.5L7.5 6.5M11.5 10.5L7.5 14.5M3.5 6V2.5C3.5 1.39543 4.39543 0.5 5.5 0.5H18.5C19.6046 0.5 20.5 1.39543 20.5 2.5V10.5V18.5C20.5 19.6046 19.6046 20.5 18.5 20.5H10H5.5V20.5C4.39543 20.5 3.5 19.6046 3.5 18.5V15" stroke="#D80C0C"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_101_148">
+                                            <rect width="21" height="21" fill="white"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                        </form>
+                    </li>
+                @endauth
+                <li><a href="{{url('/wishlist')}}" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+				{{--
+				@auth	
+					<li>
+						<img class="avatar" src="{{ url('img/avatar.jpg') }}" alt="">
+					</li>
+				@endauth
+				--}}
+            </ul>
+            <!-- /top_menu -->
+            <a href="#menu" class="btn_mobile">
+                <div class="hamburger hamburger--spin" id="hamburger">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
+            </a>
+            <nav id="menu" class="main-menu">
+                <ul>
+                    <li><span><a href="{{url('/')}}">Home</a></span></li>
+                    <li><span><a href="{{url('/rooms/grid')}}">Room</a></span>
+                </ul>
+            </nav>
+    
+        </header>
 	
-	<main>
-		<section class="hero_single version_2">
-			<div class="wrapper">
-				<div class="container">
-					<h3>Meeting Room experiences</h3>
-					<p>Enjoy a safe, comfortable room for your activities</p>
-					<form action="{{url('/search')}}" method="POST">
-						@csrf
-						<div class="row no-gutters custom-search-input-2">
-							<div class="col-lg-4">
-								<div class="form-group">
-									<input class="form-control" type="text" name="roomName" placeholder="Nama Ruangan">
-									<i class="icon_pin_alt"></i>
+		<main>
+			<section class="hero_single version_2">
+				<div class="wrapper">
+					<div class="container">
+						<h3>Meeting Room experiences</h3>
+						<p>Enjoy a safe, comfortable room for your activities</p>
+						<form action="{{url('/search')}}" method="POST">
+							@csrf
+							<div class="row no-gutters custom-search-input-2">
+								<div class="col-lg-4">
+									<div class="form-group">
+										<input class="form-control" type="text" name="roomName" placeholder="Nama Ruangan">
+										<i class="icon_pin_alt"></i>
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="form-group">
+										<input class="form-control" type="text" name="maxpeople" placeholder="Kapasitas Ruangan">
+										<i class="icon_plus"></i>
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<input type="submit" class="btn_search" value="Search">
 								</div>
 							</div>
-							<div class="col-lg-4">
-								<div class="form-group">
-									<input class="form-control" type="text" name="maxpeople" placeholder="Kapasitas Ruangan">
-									<i class="icon_plus"></i>
-								</div>
-							</div>
-							<div class="col-lg-4">
-								<input type="submit" class="btn_search" value="Search">
-							</div>
-						</div>
-						<!-- /row -->
-					</form>
-				</div>
-			</div>
-		</section>
-		<!-- /hero_single -->
-
-		<div class="container container-custom margin_80_0">
-			<div class="main_title_2">
-
-				<span><em></em></span>
-				<h2>Our popular Meeting Rooms</h2>
-				<p>Various types of rooms that you can choose.</p>
-			</div>
-			<div id="reccomended" class="owl-carousel owl-theme owl-loaded owl-drag">
-				@foreach ($rooms as $room)
-				<div class="item">
-					<div class="box_grid">
-						<figure>
-							@auth
-								@if ($room['wishlisted'])
-									<a href="#0" class="wish_bt liked" onclick="unwishlist('{{$room['wishlistId']}}')"></a>
-								@else
-									<a href="#0" class="wish_bt" onclick="wishlist('{{$room['id']}}')"></a>
-								@endif
-							@endauth
-							@guest
-								<a href="#0" class="wish_bt" onclick="wishlist('{{$room['id']}}')"></a>
-							@endguest
-							<a href="{{url('/room'.'/'.$room['id'])}}"><img src="{{asset($room['image'])}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
-						</figure>
-						<div class="wrapper">
-							<h3><a href="{{url('/room'.'/'.$room['id'])}}">{{ $room['room_name'] }}</a></h3>
-							<p>{{ $room['description'] }}</p>
-							<span class="price"><strong>Rp.{{ $room['price'] }}</strong> /per Ruangan</span>
-						</div>
-						<ul>
-							<li>{{-- this need to exist for layout --}}</li>
-							<li>
-								<div class="score">
-									<span>
-										Superb
-										<em>{{ $room['ratingCount'] }} Reviews</em>
-									</span>
-									<strong>{{ $room['rating'] }}</strong>
-								</div>
-							</li>
-						</ul>
+							<!-- /row -->
+						</form>
 					</div>
 				</div>
-				@endforeach
-			</div>
-			<!-- /carousel -->
-			<p class="btn_home_align"><a href="{{ url('/rooms/grid') }}" class="btn_1 rounded">View all Rooms</a></p>
-			{{-- some random line --}}
-			{{-- <hr class="large"> --}}
-		</div>
-	</main>
-	<!-- /main -->
+			</section>
+			<!-- /hero_single -->
 
-	@extends('layout.footer')
-	<!--/footer-->
+			<div class="container container-custom margin_80_0">
+				<div class="main_title_2">
+
+					<span><em></em></span>
+					<h2>Our popular Meeting Rooms</h2>
+					<p>Various types of rooms that you can choose.</p>
+				</div>
+				<div id="reccomended" class="owl-carousel owl-theme owl-loaded owl-drag">
+					@foreach ($rooms as $room)
+					<div class="item">
+						<div class="box_grid">
+							<figure>
+								@auth
+									@if ($room['wishlisted'])
+										<a href="#0" class="wish_bt liked" onclick="unwishlist('{{$room['wishlistId']}}')"></a>
+									@else
+										<a href="#0" class="wish_bt" onclick="wishlist('{{$room['id']}}')"></a>
+									@endif
+								@endauth
+								@guest
+									<a href="#0" class="wish_bt" onclick="wishlist('{{$room['id']}}')"></a>
+								@endguest
+								<a href="{{url('/room'.'/'.$room['id'])}}"><img src="{{asset($room['image'])}}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+							</figure>
+							<div class="wrapper">
+								<h3><a href="{{url('/room'.'/'.$room['id'])}}">{{ $room['room_name'] }}</a></h3>
+								<p>{{ $room['description'] }}</p>
+								<span class="price"><strong>Rp.{{ $room['price'] }}</strong> /per Ruangan</span>
+							</div>
+							<ul>
+								<li>{{-- this need to exist for layout --}}</li>
+								<li>
+									<div class="score">
+										<span>
+											Superb
+											<em>{{ $room['ratingCount'] }} Reviews</em>
+										</span>
+										<strong>{{ $room['rating'] }}</strong>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					@endforeach
+				</div>
+				<!-- /carousel -->
+				<p class="btn_home_align"><a href="{{ url('/rooms/grid') }}" class="btn_1 rounded">View all Rooms</a></p>
+				{{-- some random line --}}
+				{{-- <hr class="large"> --}}
+			</div>
+		</main>
+		<!-- /main -->
+
+		@extends('layout.footer')
+		<!--/footer-->
+	
 	</div>
 	<!-- page -->
 	
@@ -239,26 +246,6 @@
 			form.submit();
 		}
 	</script>
-	
-	<!-- DATEPICKER  -->
-	{{-- <script>
-	$(function() {
-	  'use strict';
-	  $('input[name="dates"]').daterangepicker({
-		  autoUpdateInput: false,
-		  minDate:new Date(),
-		  locale: {
-			  cancelLabel: 'Clear'
-		  }
-	  });
-	  $('input[name="dates"]').on('apply.daterangepicker', function(ev, picker) {
-		  $(this).val(picker.startDate.format('MM-DD-YY') + ' > ' + picker.endDate.format('MM-DD-YY'));
-	  });
-	  $('input[name="dates"]').on('cancel.daterangepicker', function(ev, picker) {
-		  $(this).val('');
-	  });
-	});
-	</script> --}}
 	
 </body>
 </html>

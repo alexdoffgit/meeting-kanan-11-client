@@ -15,6 +15,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SortController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\RegisterController as AdminRegisterController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OrderController;
 use App\Models\Room;
 
@@ -58,8 +59,9 @@ Route::post('search/grid', [SearchController::class, 'gridSearch']);
 Route::post('/search/list', [SearchController::class, 'listSearch']);
 
 Route::get('/cart1', [CartController::class, 'indexCart1']);
-Route::get('/cart2', [CartController::class, 'indexCart2'])->middleware('auth')->middleware('cart');
+// Route::get('/cart2', [CartController::class, 'indexCart2'])->middleware('auth')->middleware('cart');
 Route::get('/cart3', [CartController::class, 'indexCart3'])->middleware('auth')->middleware('cart');
+Route::get('/invoice', [InvoiceController::class, 'index']);
 Route::post('/cart/add', [CartController::class, 'addToCart'])->middleware('auth');
 Route::delete('/cart/delete/{id}', [CartController::class, 'deleteCartItem']);
 
