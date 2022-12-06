@@ -30,7 +30,7 @@
 		    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
           <a class="nav-link{{-- nav-link-collapse collapsed --}}" {{-- data-toggle="collapse" --}} href="{{ url('/admin/listings') }}" {{-- data-parent="#mylistings" --}}>
             <i class="fa fa-fw fa-list"></i>
-            <span class="nav-link-text">My listings</span>
+            <span class="nav-link-text">Daftar Ruangan</span>
           </a>
           {{--
           <ul class="sidenav-second-level collapse" id="collapseMylistings">
@@ -65,7 +65,7 @@
 		    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
           <a class="nav-link" href="{{ url('/admin/add-listing') }}">
             <i class="fa fa-fw fa-plus-circle"></i>
-            <span class="nav-link-text">Add listing</span>
+            <span class="nav-link-text">Tambah Ruangan</span>
           </a>
         </li>
 
