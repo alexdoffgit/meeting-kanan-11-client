@@ -21,10 +21,11 @@ class LoginController extends Controller
             'email' => 'required',
             'pwd' => 'required'
         ]);
-
+        
         $email = $data['email'];
         $password = $data['pwd'];
-
+        $role = Auth::hasUser();
+        dd($role);
         $valid = Auth::attempt([
             'email' => $email,
             'password' => $password,

@@ -11,7 +11,7 @@ class WishlistController extends Controller
     private SearchRepositoryInterface $searchRepo;
 
     public function __construct(SearchRepositoryInterface $searchRepo)
-    {
+    { 
         $this->searchRepo = $searchRepo;
     }
 
