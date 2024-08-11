@@ -30,7 +30,7 @@ use App\Models\Room;
 |
 */
 
-Route::get('/', [RoomsController::class, 'index'])->middleware('checkadmin');
+Route::get('/', [RoomsController::class, 'index'])->name('home')->middleware('checkadmin');
 
 Route::get('/register', [RegisterController::class, 'displayRegister'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
@@ -46,7 +46,7 @@ Route::post('/images/update/{id}', [BatchImageUploadController::class, 'update']
 Route::get('/rooms/grid', [RoomsController::class, 'roomGridIndex'])->name('rooms.gridview');
 Route::get('/rooms/list', [RoomsController::class, 'roomListIndex'])->name('rooms.listview');
 
-Route::get('/rooms/sort/all', [SortController::class, 'all'])->name('rooms.all');
+Route::get('/rooms/sort/all', [SortController::class, 'all'])->name('rooms.sort.all');
 Route::get('/rooms/sort/popular', [SortController::class, 'popular'])->name('rooms.sort.popular');
 Route::get('/rooms/sort/latest', [SortController::class, 'latest'])->name('rooms.sort.latest');
 
