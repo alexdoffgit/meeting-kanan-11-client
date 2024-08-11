@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\Feature\\LoginTest::test_can_visit_login_page":8,"Tests\\Feature\\LoginTest::test_can_authenticate_user":8},"times":{"Tests\\Feature\\LoginTest::test_can_visit_login_page":0.64,"Tests\\Feature\\LoginTest::test_can_authenticate_user":0.71}}
