@@ -4,13 +4,14 @@ namespace App\Repositories;
 
 use App\Models\Room;
 use App\Interfaces\RoomRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class RoomRepository implements RoomRepositoryInterface {
     private function roomListInternal($load)
     {
         $limit = $load * 6;
 
-        $loggedIdUser = !empty(auth()->user()) ? auth()->user()->id : false;
+        $loggedIdUser = !empty(Auth::user()) ? Auth::user()->id : false;
 
         return Room::limit($limit)
             ->get()
