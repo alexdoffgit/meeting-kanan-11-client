@@ -175,9 +175,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        // image
-        Intervention\Image\ImageServiceProvider::class,
-
         // repo
         App\Providers\RepositoryServiceProvider::class,
     ],
@@ -233,8 +230,7 @@ return [
         'Str' => Illuminate\Support\Str::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class,
-        'Image' => Intervention\Image\Facades\Image::class,
+        'View' => Illuminate\Support\Facades\View::class
     ],
 
 ];
