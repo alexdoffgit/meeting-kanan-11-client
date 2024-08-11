@@ -32,45 +32,44 @@ use App\Models\Room;
 
 Route::get('/', [RoomsController::class, 'index'])->middleware('checkadmin');
 
-Route::get('/register', [RegisterController::class, 'displayRegister']);
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'displayRegister'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/images/{id}', [BatchImageUploadController::class, 'store']);
 Route::post('/images/update/{id}', [BatchImageUploadController::class, 'update']);
 
-Route::get('/rooms/grid', [RoomsController::class, 'roomGridIndex']);
-Route::get('/rooms/list', [RoomsController::class, 'roomListIndex']);
+Route::get('/rooms/grid', [RoomsController::class, 'roomGridIndex'])->name('rooms.gridview');
+Route::get('/rooms/list', [RoomsController::class, 'roomListIndex'])->name('rooms.listview');
 
-Route::get('/rooms/sort/all', [SortController::class, 'all']);
-Route::get('/rooms/sort/popular', [SortController::class, 'popular']);
-Route::get('/rooms/sort/latest', [SortController::class, 'latest']);
+Route::get('/rooms/sort/all', [SortController::class, 'all'])->name('rooms.all');
+Route::get('/rooms/sort/popular', [SortController::class, 'popular'])->name('rooms.sort.popular');
+Route::get('/rooms/sort/latest', [SortController::class, 'latest'])->name('rooms.sort.latest');
 
+Route::get('/room/{id}', [RoomDetailController::class, 'index'])->name('room.detail');
+Route::post('/room/{id}/comment', [RoomDetailController::class, 'postReview'])->name('comment.post');
 
-Route::get('/room/{id}', [RoomDetailController::class, 'index']);
-Route::post('/room/{id}/comment', [RoomDetailController::class, 'postReview']);
+Route::post('/search', [SearchController::class, 'homeSearch'])->name('search.submit');
+Route::post('/search/grid', [SearchController::class, 'gridSearch'])->name('search.grid.submit');
+Route::post('/search/list', [SearchController::class, 'listSearch'])->name('search.list.submit');
 
-Route::post('/search', [SearchController::class, 'homeSearch']);
-Route::post('search/grid', [SearchController::class, 'gridSearch']);
-Route::post('/search/list', [SearchController::class, 'listSearch']);
-
-Route::get('/cart1', [CartController::class, 'indexCart1']);
+Route::get('/cart1', [CartController::class, 'indexCart1'])->name('cart.step1');
 // Route::get('/cart2', [CartController::class, 'indexCart2'])->middleware('auth')->middleware('cart');
-Route::get('/cart3', [CartController::class, 'indexCart3'])->middleware('auth')->middleware('cart');
-Route::get('/invoice', [InvoiceController::class, 'index']);
-Route::post('/cart/add', [CartController::class, 'addToCart'])->middleware('auth');
-Route::delete('/cart/delete/{id}', [CartController::class, 'deleteCartItem']);
+Route::get('/cart3', [CartController::class, 'indexCart3'])->name('cart.step3')->middleware('auth')->middleware('cart');
+Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.submit')->middleware('auth');
+Route::delete('/cart/delete/{id}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 
-Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth')->middleware('cart');
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout')->middleware('auth')->middleware('cart');
 Route::post('/midtrans-notification', [OrderController::class, 'receiveMidtransNotification']);
 
-Route::get('/wishlist', [WishlistController::class, 'index']);
-Route::post('/wishlist/add', [WishlistController::class, 'add'])->middleware('auth');
-Route::post('/wishlist/delete', [WishlistController::class, 'delete'])->middleware('auth');
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+Route::post('/wishlist/add', [WishlistController::class, 'add'])->name('wishlist.add')->middleware('auth');
+Route::post('/wishlist/delete', [WishlistController::class, 'delete'])->name('wishlist.delete')->middleware('auth');
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('/', function() { return redirect('/admin/dashboard'); });
